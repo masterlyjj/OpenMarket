@@ -1,11 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,33 +13,33 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="/resources/js/file.js" type="text/javascript"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <style type="text/css">
-    .btn_ex_re{
-  	border-radius: 5px;	
+ 
+<style type="text/css">
+ .btn_ex_re{
+ border-radius: 5px;	
   }
-  	.btn_cancel{
-  	border-radius: 5px;	
-  	}
-  	img {
-	width: 100px;
-	height: 100px;
-	}
-  </style>
+.btn_cancel{
+ border-radius: 5px;	
+ }
+img {
+width: 100px;
+height: 100px;
+}
+</style>
 </head>
 	<jsp:include page="../header.jsp" />
 	<jsp:include page="../sidebar.jsp" />
 <body>
-	<div class="container" style=" font-size : small;">
+	<div class="container" style="font-size: small;">
 		<h2>주문내역</h2>
-
 
 		<div class="wrap-detail">
 			<form action="/exchangeRefund/requestpage">
-							<input type="hidden" name="member_id" value="">
-							<input type="hidden" name="order_id" value="">
-							<input type="hidden" name="price" value="">
-							<input type="hidden" name="order_date" value="">
-							<input type="hidden" name="ea" value="">
+				<input type="hidden" name="member_id" value=""> <input
+					type="hidden" name="order_id" value=""> <input
+					type="hidden" name="price" value=""> <input type="hidden"
+					name="order_date" value=""> <input type="hidden" name="ea"
+					value="">
 
 				<table class="table">
 					<thead>
@@ -58,24 +54,28 @@
 							<th scope="col">비고</th>
 						</tr>
 					</thead>
+					
 					<tbody>
 						<c:forEach items="${pt.list}" var="ovo" varStatus="i">
 							<tr class="stat">
-								
-								
-								<td><a style="text-decoration: none; color: #000;" href="/order/orderpage/${ovo.order_id}">${ovo.order_id}</a></td>
-								<td><div data-item_no="${ovo.item_no}" data-item_name="${ovo.item_name}" data-file_name="${ovo.file_name}" class="uploadedList${i.index}"></div></td>
-								<td><a style="text-decoration: none; color: #000;" href="/item/read/${ovo.item_no}">${ovo.item_name}</a></td>
+								<td><a style="text-decoration: none; color: #000;"
+									href="/order/orderpage/${ovo.order_id}">${ovo.order_id}</a></td>
+								<td><div data-item_no="${ovo.item_no}"
+										data-item_name="${ovo.item_name}"
+										data-file_name="${ovo.file_name}"
+										class="uploadedList${i.index}"></div></td>
+								<td><a style="text-decoration: none; color: #000;"
+									href="/item/read/${ovo.item_no}">${ovo.item_name}</a></td>
 								<td>${ovo.ea}</td>
 								<td>${ovo.price}</td>
 								<td>${ovo.status}</td>
-								<td><fmt:formatDate value="${ovo.order_date}" pattern="yyyy-MM-dd HH:mm" /></td>
+								<td><fmt:formatDate value="${ovo.order_date}"pattern="yyyy-MM-dd HH:mm" /></td>
 								<td><c:if test="${ovo.status == '상품 준비 중'}">
 										<button data-ea="${ovo.ea}"
 											data-order_date="${ovo.order_date}" data-price="${ovo.price}"
 											data-member_id="${ovo.member_id}"
 											data-order_id="${ovo.order_id}" class="btn_cancel">주문취소</button>
-										
+
 									</c:if> <c:if test="${ovo.status == '교환' || ovo.status == '환불'}">
 										<p>진행중</p>
 									</c:if> <c:if test="${ovo.status == '배송완료'}">
@@ -83,12 +83,12 @@
 											data-order_date="${ovo.order_date}" data-price="${ovo.price}"
 											data-member_id="${ovo.member_id}"
 											data-order_id="${ovo.order_id}" class="btn_ex_re">교환/환불</button>
-										<input class="btn_review" data-item_no ="${ovo.item_no}" type="button" value="리뷰쓰기"/>
+										<input class="btn_review" data-item_no="${ovo.item_no}"
+											type="button" value="리뷰쓰기" />
 									</c:if> <c:if
 										test="${ovo.status == '교환완료' || ovo.status == '환불완료' || ovo.status == '취소'}">
 										<p>완료</p>
 									</c:if></td>
-
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -96,12 +96,9 @@
 			</form>
 		</div>
 		<div style="margin-left: 40%">
-		<jsp:include page="pageForMember.jsp" />
+			<jsp:include page="pageForMember.jsp" />
 		</div>
 	</div>
-
-
-
 
 	<jsp:include page="../footer.jsp" />
 	<script type="text/javascript">
@@ -141,7 +138,6 @@ $(document).ready(function() {
 			success : function(result){
 				window.location.reload();
 			}
-			
 		});
 	});
 	
@@ -167,15 +163,8 @@ $(document).ready(function() {
 	        window.open(url,"","width=400,height=500,left=600");
 		});
 	});
-	
-	
 });
 
-
-
 </script>
-
-
-
 </body>
 </html>

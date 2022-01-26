@@ -22,7 +22,7 @@ public class CartServiceImpl implements CartService {
 	private CartDAO cDao;
 	@Inject
 	private FileDAO fDao;
-	
+
 	@Override
 	public void insert(CartVO vo) {
 		cDao.insert(vo);
@@ -31,7 +31,7 @@ public class CartServiceImpl implements CartService {
 	@Transactional
 	@Override
 	public String countCart(CartVO vo) {
-		
+
 		int count = cDao.countCart(vo);
 		if (count == 0) {
 			cDao.insert(vo);
@@ -57,19 +57,17 @@ public class CartServiceImpl implements CartService {
 		map.put("member_id", member_id);
 		List<CartVO> list = cDao.readList(map);
 		pt.setList(list);
-		
+
 		list = pt.getList();
-		
-		for(int i=0; i<list.size(); i++) {
+
+		for (int i = 0; i < list.size(); i++) {
 			int item_no = pt.getList().get(i).getItem_no();
 			String file_name = fDao.getFile(item_no).get(0);
 			pt.getList().get(i).setFile_name(file_name);
 		}
-		
-		
+
 		return pt;
 	}
-
 
 	@Override
 	public int delete(int cart_no) {
@@ -78,7 +76,7 @@ public class CartServiceImpl implements CartService {
 
 	@Override
 	public void changeQuantity(CartVO vo) {
-		cDao.changeQuantity(vo);		
+		cDao.changeQuantity(vo);
 	}
 
 	@Override
@@ -95,7 +93,7 @@ public class CartServiceImpl implements CartService {
 	public List<ItemVO> getDiscount(String member_id) {
 		return cDao.getDiscount(member_id);
 	}
-	
+
 	@Override
 	public void updateQuantity(CartVO vo) {
 		cDao.updateQuantity(vo);
@@ -105,6 +103,5 @@ public class CartServiceImpl implements CartService {
 	public int sumMoney(PageTO<CartVO> pt, String member_id) {
 		return cDao.sumMoney(pt, member_id);
 	}
-
 
 }

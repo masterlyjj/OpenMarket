@@ -9,10 +9,7 @@
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
-    
-    
     <c:forEach begin="${spt.beginPageNum}" end="${spt.endPageNum}" var="i">
-
     <li class="page-item ${spt.curPage == i ? 'active' : ''}"><a class="page-link" href="/search/search?keyword=${spt.keyword}&item_category=${spt.item_category}&curPage=${i}">${i}</a></li>
     </c:forEach>
     

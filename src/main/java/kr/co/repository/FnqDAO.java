@@ -17,8 +17,6 @@ public interface FnqDAO {
 
 	void delete(int fnq_no);
 
-
-
 	int getAmount();
 
 	List<FnqVO> list(PageTO<FnqVO> pt);

@@ -7,7 +7,6 @@ import javax.inject.Inject;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -83,15 +82,13 @@ public class ReviewController {
 
 		return pt;
 	}
-	
-
 
 	@RequestMapping(value = "", method = RequestMethod.POST)
 	public ResponseEntity<String> insert(@RequestBody Map<String, Object> map) {
 		ResponseEntity<String> entity = null;
 
 		try {
-			
+
 			rService.insert(map);
 			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
 		} catch (Exception e) {

@@ -1,15 +1,11 @@
 package kr.co.repository;
 
 import java.util.List;
-import java.util.Map;
-
 
 import kr.co.domain.ManagerVO;
 import kr.co.domain.MemberVO;
-import kr.co.domain.OrderVO;
 import kr.co.domain.OrdersVO;
 import kr.co.domain.PageTO;
-
 
 public interface ManagerDAO {
 
@@ -17,14 +13,11 @@ public interface ManagerDAO {
 
 	List<OrdersVO> list();
 
-	
-	 List<Object> saleRank();
-	 
-	 List<Object> daySale();
+	List<Object> saleRank();
 
-	 List<Object> likeRank();
+	List<Object> daySale();
 
-	
+	List<Object> likeRank();
 
 	List<Object> keywordRank();
 
@@ -55,15 +48,5 @@ public interface ManagerDAO {
 	List<MemberVO> memberList(PageTO<MemberVO> pt);
 
 	int getAmount();
-
-	
-
-
-
-
-
-
-	
-
 
 }

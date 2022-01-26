@@ -9,6 +9,7 @@
 		INSERT INTO review (review_no, board_no, member_id,
 		review_content ,review_grade) VALUES (seq_board_review_no.NEXTVAL,
 		#{board_no}, #{member_id}, #{review_content}, #{review_grade})
+		
 		<selectKey order="AFTER" keyProperty="review_no" resultType="Integer">
 			SELECT seq_board_review_no.CURRVAL FROM dual
 		</selectKey>
@@ -55,11 +56,14 @@
 	<delete id="deleteReview">
 		DELETE FROM review WHERE review_no = #{review_no}
 	</delete>
+	
 	<select id="getAmount" resultType="Integer">
 		SELECT
 		COUNT(review_no) FROM review
 	</select>
+	
 	<select id="listOfAll" resultType="kr.co.domain.ReviewVO">
 		SELECT * FROM review ORDER BY review_no DESC
 	</select>
+	
 </mapper>
