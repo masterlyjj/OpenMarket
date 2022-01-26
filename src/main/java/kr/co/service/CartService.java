@@ -17,19 +17,17 @@ public interface CartService {
 	PageTO<CartVO> readCart(PageTO<CartVO> pt, String member_id);
 
 	int delete(int cart_no);
-	
+
 	void deleteAll(int cart_no);
 
 	void changeQuantity(CartVO vo);
-	
+
 	void updateQuantity(CartVO vo);
-	
+
 	List<CartVO> list(String member_id);
 
 	List<ItemVO> getDiscount(String member_id);
 
 	int sumMoney(PageTO<CartVO> pt, String member_id);
-
-	
 
 }

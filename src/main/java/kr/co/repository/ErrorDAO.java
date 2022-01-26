@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import kr.co.domain.ErrorVO;
-import kr.co.service.ErrorService;
 
 public interface ErrorDAO {
 

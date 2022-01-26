@@ -10,15 +10,10 @@
 <title>Insert title here</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-	<script src="/resources/js/qna.js" type="text/javascript"></script>
-	
-	
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="/resources/js/qna.js" type="text/javascript"></script>
 </head>
 
 <style>
@@ -68,8 +63,6 @@ position: relative;
 top: 10px;
 left : 365px;
 }
-
-
 </style>
 <body>
 	<div id="div2" class="table-responsive" style="margin: 50px 0px 20px 20px;">
@@ -161,15 +154,6 @@ left : 365px;
 			$("#qna_no").attr("value", qna_no);
 			qnaAnswer();
 		});
-// 		$(".btn_answerform").click(function(){
-// 			var clkIdx = $(".btn_answerform").index($(this));
-// 			if ($(".area-answer").css("display") == "none"){
-// 				$(".area-answer").css("display","table-row")
-// 			} else {
-// 				$(".area-answer").css("display","none");
-// 			}
-// 		});
-		
 		$("tbody").on("click",".viewcontent",function() {
 	         var clkIdx = $(".viewcontent").index($(this));
 	         var val = $(".qa").eq(clkIdx).text();

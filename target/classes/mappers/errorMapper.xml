@@ -5,12 +5,16 @@
 
 <mapper namespace="kr.co.error">
 	<insert id="insert">
-		INSERT INTO error (error_no,filename,methodname,linenum,uri) VALUES (seq_error_no.NEXTVAL,#{filename},#{methodname},#{linenum},#{uri})
+		INSERT INTO error
+		(error_no,filename,methodname,linenum,uri) VALUES
+		(seq_error_no.NEXTVAL,#{filename},#{methodname},#{linenum},#{uri})
 	</insert>
 	<select id="list" resultType="kr.co.domain.ErrorVO">
-		SELECT * FROM error ORDER BY regdate DESC
+		SELECT * FROM error ORDER BY
+		regdate DESC
 	</select>
 	<update id="update">
-		UPDATE error SET review = '해결' WHERE error_no=#{error_no}
+		UPDATE error SET review = '해결' WHERE
+		error_no=#{error_no}
 	</update>
 </mapper>

@@ -1,8 +1,6 @@
 package kr.co.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -72,7 +70,7 @@ public class CategoryController {
 	public String update(CategoryVO vo) {
 
 		cService.update(vo);
-		
+
 		return "redirect:/category/list/";
 	}
 

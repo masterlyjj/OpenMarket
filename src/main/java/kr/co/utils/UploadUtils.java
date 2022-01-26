@@ -38,21 +38,20 @@ public class UploadUtils {
 
 		return uploadedFilename;
 	}
-	
+
 	public static String uploadFile2(MultipartFile file, String filename, String uploadpath) throws Exception {
-		
+
 		String formatName = getFormatName(filename);
 		MediaType mType = getMediaType(formatName);
-		
+
 		String savedName = null;
-		
-		if(mType != null) {
+
+		if (mType != null) {
 			savedName = getOriginalImageFilename(filename);
-		}else {
+		} else {
 			savedName = filename;
 		}
-		
-		
+
 		File target = new File(uploadpath + savedName);
 		FileCopyUtils.copy(file.getBytes(), target);
 
@@ -64,7 +63,7 @@ public class UploadUtils {
 
 		return uploadedFilename;
 	}
-	
+
 	public static String calData(String uploadpath) {
 		Calendar cal = Calendar.getInstance();
 
@@ -81,7 +80,7 @@ public class UploadUtils {
 
 		return datePath;
 	}
-	
+
 	public static void makeDir(String uploadpath, String yearPath, String monthPath, String datePath) {
 		File f1 = new File(uploadpath, datePath);
 		if (f1.exists()) {
@@ -103,12 +102,12 @@ public class UploadUtils {
 		}
 
 	}
-	
+
 	public static String getSystemFilename(String originalFilename) {
 		UUID uid = UUID.randomUUID();
 		return uid.toString() + "_" + originalFilename;
 	}
-	
+
 	public static String getFormatName(String filename) {
 		int idx = filename.lastIndexOf(".");
 		String formatName = filename.substring(idx + 1);
@@ -129,14 +128,14 @@ public class UploadUtils {
 
 		return mediaType;
 	}
-	
+
 	private static String makeThumbnail(String uploadpath, String datepath, String savedName) throws Exception {
 		File srcFile = new File(uploadpath + datepath, savedName);
-		
+
 		BufferedImage sourceImg = ImageIO.read(srcFile);
 		BufferedImage destImg = Scalr.resize(sourceImg, Scalr.Method.AUTOMATIC, Scalr.Mode.FIT_EXACT, 100);
 		String thumbnailName = datepath + File.separator + "s_" + savedName;
-		
+
 		File newFile = new File(uploadpath, thumbnailName);
 		String formatName = getFormatName(savedName);
 
@@ -144,14 +143,14 @@ public class UploadUtils {
 
 		return thumbnailName.replace(File.separatorChar, '/');
 	}
-	
+
 	private static String makeThumbnail2(String uploadpath, String savedName, String filename) throws Exception {
 		File srcFile = new File(uploadpath + savedName);
-		
+
 		BufferedImage sourceImg = ImageIO.read(srcFile);
 		BufferedImage destImg = Scalr.resize(sourceImg, Scalr.Method.AUTOMATIC, Scalr.Mode.FIT_EXACT, 100);
 		String thumbnailName = filename;
-		
+
 		File newFile = new File(uploadpath, thumbnailName);
 		String formatName = getFormatName(savedName);
 
@@ -159,17 +158,17 @@ public class UploadUtils {
 
 		return thumbnailName.replace(File.separatorChar, '/');
 	}
-	
+
 	private static String makeIconInfo(String datePath, String savedName) {
 		String iconInfo = datePath + File.separator + savedName;
 		iconInfo = iconInfo.replace(File.separatorChar, '/');
 
 		return iconInfo;
 	}
-	
+
 	public static String getOriginalImageFilename(String filename) {
 		String prefix = filename.substring(0, 12);
 		String suffix = filename.substring(14);
-		return prefix+suffix;
+		return prefix + suffix;
 	}
 }
