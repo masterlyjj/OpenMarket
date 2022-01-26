@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.order">
+
+	<insert id="insert1">
+	INSERT INTO package (order_item_no, order_no, member_id, item_no, cart_no,
+	order_quantity, order_price, order_email , order_name,
+	order_phone_number, order_address, order_detail_address)
+	VALUES
+	(seq_order_item_no.NEXTVAL, seq_order_no.NEXTVAL, #{member_id}, #{item_no}, #{cart_no},
+	#{order_quantity}, #{order_price}, #{order_email}, #{order_name},
+	#{order_phone_number}, #{order_address}, #{order_detail_address})
+	<selectKey order="AFTER" keyProperty="order_item_no" resultType="Integer">
+	SELECT seq_order_item_no.CURRVAL FROM dual
+	</selectKey>
+	</insert>
+	
+	<select id="detail" resultType="kr.co.domain.OrderVO">
+		SELECT * FROM package WHERE order_item_no = #{order_item_no}
+	</select>
+	
+	<insert id="insert">
+	INSERT INTO orders (order_id, item_no, member_id, ea, price, address, dAddress, phone, status, receiver)
+	VALUES
+	(seq_order_id.NEXTVAL, #{item_no}, #{member_id}, #{ea}, #{price}, #{address}, #{dAddress}, #{phone}, #{status}, #{receiver})
+	<selectKey order="AFTER" keyProperty="order_id" resultType="Integer">
+	SELECT seq_order_id.CURRVAL FROM dual
+	</selectKey>
+	</insert>
+	
+	<select id="list" resultType="kr.co.domain.OrdersVO">
+	SELECT * FROM orders WHERE member_id = #{member_id} ORDER BY order_date desc
+	</select>
+	
+	<select id="list_manager" resultType="kr.co.domain.OrdersVO">
+	SELECT * FROM orders ORDER BY order_date desc
+	</select>
+	
+	<update id="status">
+	UPDATE orders SET status = #{status} WHERE order_id = #{order_id}
+	</update>
+	
+	<select id="mlist2" resultType="kr.co.domain.OrdersVO">
+	SELECT * FROM orders WHERE member_id = #{member_id} ORDER BY order_date DESC
+	</select>
+	
+	<select id="getOrder_date" resultType="String">
+	SELECT order_date FROM orders WHERE order_id = #{order_id} 
+	</select>
+	
+	<select id="checkorder" resultType="kr.co.domain.OrdersVO">
+   SELECT * FROM orders WHERE order_id = #{order_id}
+   </select>
+   <select id="getAmount" resultType="Integer">
+		SELECT COUNT(order_id) FROM orders
+	</select>
+	<select id="getAmountMember" resultType="Integer">
+		SELECT COUNT(order_id) FROM orders WHERE member_id = #{member_id}
+	</select>
+
+</mapper>
