@@ -123,7 +123,6 @@ var item_price = ${ivo.item_price};
 		$.getJSON("/item/getItem_size/"+item_name, function(data) {
 			
 			for(var i=0; i<data.length; i++){
-				console.log(data[i]);
 				var msg = "<option>"+data[i]+"</option>";
 				$("#item_size").append(msg);
 			}
@@ -131,7 +130,6 @@ var item_price = ${ivo.item_price};
 		
 		$.getJSON("/item/getItem_color/"+item_name, function(data) {
 			for(var i=0; i<data.length; i++){
-				console.log(data[i]);
 				var msg = "<option>"+data[i]+"</option>";
 				$("#item_color").append(msg);
 			}
