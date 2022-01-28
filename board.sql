@@ -20,13 +20,14 @@ CREATE TABLE review(
 	review_content VARCHAR2(100) NOT NULL,
 	review_regdate DATE DEFAULT SYSDATE,
 	review_updatedate DATE DEFAULT SYSDATE,
+	review_indent NUMBER DEFAULT 0,
 	review_grade NUMBER DEFAULT 5,
 	CONSTRAINT pk_board_review_no PRIMARY KEY(review_no),
 	CONSTRAINT fk_board_review_board_no FOREIGN KEY(board_no) REFERENCES board(board_no) ON DELETE CASCADE,
 	CONSTRAINT fk_board_review_member_id FOREIGN KEY(member_id) REFERENCES member(member_id) ON DELETE CASCADE
 )
-
-
+SELECT * FROM review
+DROP TABLE review
 CREATE SEQUENCE seq_board_review_no
 
 qna 테이블

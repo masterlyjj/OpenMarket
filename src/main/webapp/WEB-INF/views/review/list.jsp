@@ -17,32 +17,49 @@
 
 </head>
 <style>
-.asd{
-display: none;
+.asd {
+	display: none;
 }
-
+  .star {
+    position: relative;
+    font-size: 2rem;
+    color: #ddd;
+  }
+  
+  .star input {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .empty_star {
+    width: 0;
+    position: absolute; 
+    left: 0;
+    color: yellow;
+    overflow: hidden;
+    pointer-events: none;
+  }
 </style>
 <body>
 
-<input id="managerCode" type="hidden" value="${managerLogin.manager_code}">
-<div style="margin-top: 20px;">
+	<input id="managerCode" type="hidden"
+		value="${managerLogin.manager_code}">
+	<div style="margin-top: 20px;">
 		<h4 id="div3">REVIEW</h4>
-		</div>
-		
-		<h6 style="opacity: 0.5">여러분의 소중한 리뷰를 작성해주세요.</h6>
-	<c:if test="${!empty managerLogin.manager_code}">
-	<button class="qwe">리뷰관리</button>
-	</c:if>
-	<div id="replies" class="mt-5">
-	
 	</div>
-	<br>	
 
+	<h6 style="opacity: 0.5">여러분의 소중한 리뷰를 작성해주세요.</h6>
+	<c:if test="${!empty managerLogin.manager_code}">
+		<button class="qwe">리뷰관리</button>
+	</c:if>
+	<div id="replies" class="mt-5"></div>
+	<br>
 
-	
-
-
-<!-- Modal -->
+	<!-- Modal -->
 	<div class="modal fade" id="staticBackdrop" data-backdrop="static"
 		data-keyboard="false" tabindex="-1"
 		aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -86,23 +103,16 @@ display: none;
 	<script type="text/javascript">
 		var board_no = ${vo.board_no};
 		var loginmember_id = "${login.member_id}"
-		console.log(loginmember_id);	
 		var mcode = $("#managerCode").val();
-		console.log(mcode);
-		
 
-		
 		$(document).ready(function() {
-			
-
-		
 
 			getRepliesPage(board_no, 1, $("#replies"));
-			
+
 			$("body").on("click", ".qwe", function() {
-				if(mcode==1 || mcode ==2){
-					$(".asd").css("display","table-row");
-					}	
+				if (mcode == 1 || mcode == 2) {
+					$(".asd").css("display", "table-row");
+				}
 			});
 
 			$("#replies").on("click", ".reply_page_left", function(event) {
@@ -160,9 +170,6 @@ display: none;
 				var review_grade = $("#div_reviewui_review_grade").val();
 				var review_content = $("#div_reviewui_review_content").val();
 
-				console.log(review_grade);
-				console.log(review_content);
-
 				$.ajax({
 					type : "put",
 					url : "/replies/" + review_no,
@@ -199,9 +206,6 @@ display: none;
 				var review_content = $(this).prev(".review_content").text();
 				$("#div_reviewui_review_content").val(review_content);
 
-				console.log(review_grade);
-				console.log(review_content);
-
 			});
 
 			$("#btn_review_input").click(function() {
@@ -220,7 +224,7 @@ display: none;
 				}
 
 				if (review_grade == '') {
-					$("review_grade").focus();
+					$(".review_grade").focus();
 					return;
 				}
 
@@ -261,12 +265,16 @@ display: none;
 			$("body").on("click", ".updateui", function() {
 				location.assign("/board/updateui/${vo.board_no}/${curPage}");
 			});
-			
-		
-
 
 		});
 
+		$(window).on("load", function() {
+			var val = $("label[for='starpoint_1']").text();
+			var grade = $(".review_val").val();
+			console.log(grade);
+			console.log(val);
+
+		});
 	</script>
 
 

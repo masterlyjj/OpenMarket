@@ -125,7 +125,7 @@ function getRepliesPage(board_no, curPage, el){
 		strPage +=`
 		    <li class="page-item">
       <a class="page-link reply_page_right" href="${data['curPage']}" data-totalPage="${data['totalPage']}" aria-label="Next">
-        <span aria-hidden="true" class="text-secondary">Nest</span>	
+        <span aria-hidden="true" class="text-secondary">Next</span>	
       </a>
     </li>
   </ul>
@@ -158,14 +158,12 @@ function replyform(member_id, review_updatedate, review_content, review_grade , 
 	var msg = `
 						   <div id="review_view" class="jumbotron" style="padding: 30px 20px 30px 20px">
 
-					
-
-					        <span class="float-left">작성자 : ${member_id}</span>&emsp; | &emsp; <span class="card-text review_grade"> 평점 : ${review_grade}</span> <span class="float-right"  style="opacity: 0.5">작성시간 ${review_updatedate}</span>
-								<br>
-								<hr>			   
-
-						      
-								
+					        <span class="float-left">작성자 : ${member_id}</span>&emsp; | &emsp; <span class="card-text"> 
+								만족도 : 
+							<span class="star">★★★★★<span class="empty_star" style="width : ${review_grade*20}%;">★★★★★</span>
+							  <input type="range" name="review_grade" value="${review_grade}" step="1" min="0" max="5" readonly;>
+							</span>
+								</span> <span class="float-right"  style="opacity: 0.5">작성시간 ${review_updatedate}</span><br>
 					         <p class="card-text review_content font-weight-bold">${review_content}</p>
 							 
 							<div class="asd">
