@@ -21,9 +21,7 @@ public class ReviewVO implements Serializable{
 	private String item_name;
 	private String file_name;
 	
-	public ReviewVO() {
-		// TODO Auto-generated constructor stub
-	}
+	public ReviewVO() {}
 
 	public ReviewVO(int board_no, String member_id, String review_content) {
 		super();
@@ -43,8 +41,6 @@ public class ReviewVO implements Serializable{
 		this.review_updatedate = review_updatedate;
 		this.review_grade = review_grade;
 	}
-
-	
 	
 	public ReviewVO(int review_no, int board_no, String member_id, String review_content, String review_regdate,
 			String review_updatedate, int review_grade, int item_no, String item_name, String file_name) {
@@ -166,17 +162,4 @@ public class ReviewVO implements Serializable{
 	public String toString() {
 		return "{'item_no':" + item_no + ", 'file_name':'" + file_name + "'}";
 	}
-
-
-//	@Override
-//	public String toString() {
-//		return "{\"review_no\":" + review_no + ", \"board_no\":" + board_no + ", \"member_id\":\"" + member_id
-//				+ "\", \"review_content\":\"" + review_content + "\", \"review_regdate\":\"" + review_regdate + "\", \"review_updatedate\":\""
-//				+ review_updatedate + "\", \"review_grade\":" + review_grade + ", \"item_no\"=" + item_no + ", \"item_name\":\""
-//				+ item_name + "\", \"file_name\":\"" + file_name + "\"}";
-//	}
-	
-	
-
-	
 }

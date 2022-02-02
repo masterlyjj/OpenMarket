@@ -24,8 +24,8 @@ public class BoardController {
 	@Inject
 	private BoardService bService;
 
-	@RequestMapping(value = "reviewinsert/{board_no}", method = RequestMethod.GET)
-	public String reviewinsert(@PathVariable("board_no") int board_no) {
+	@RequestMapping(value = "reviewinsert/{board_no}/{order_id}", method = RequestMethod.GET)
+	public String reviewinsert(@PathVariable("board_no") int board_no, @PathVariable("order_id") int order_id) {
 
 		return "board/reviewinsert";
 	}
@@ -104,7 +104,7 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/getBoard_no/{item_no}", method = RequestMethod.GET)
-	public ResponseEntity<Integer> getItem_size(@PathVariable("item_no") int item_no) {
+	public ResponseEntity<Integer> getBoard_no(@PathVariable("item_no") int item_no) {
 		ResponseEntity<Integer> entity = null;
 
 		try {

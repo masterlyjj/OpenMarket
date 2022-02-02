@@ -7,8 +7,8 @@
 
 	<insert id="insert">
 		INSERT INTO review (review_no, board_no, member_id,
-		review_content, review_indent,review_grade) VALUES (seq_board_review_no.NEXTVAL,
-		#{board_no}, #{member_id}, #{review_content}, review_indent+1, #{review_grade})
+		review_content,review_grade) VALUES (seq_board_review_no.NEXTVAL,
+		#{board_no}, #{member_id}, #{review_content}, #{review_grade})
 		
 		<selectKey order="AFTER" keyProperty="review_no" resultType="Integer">
 			SELECT seq_board_review_no.CURRVAL FROM dual

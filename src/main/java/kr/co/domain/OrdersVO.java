@@ -26,8 +26,34 @@ public class OrdersVO implements Serializable{
 	private String item_name;
 	private String file_name;
 	private String ORDERDATE;
+	private int review_indent;
 	
 	public OrdersVO() {}
+	
+	
+
+
+	public OrdersVO(int order_id, int item_no, String member_id, int ea, int price, String address, String dAddress,
+			String phone, String status, String receiver, Date order_date, String item_name, String file_name,
+			String oRDERDATE, int review_indent) {
+		super();
+		this.order_id = order_id;
+		this.item_no = item_no;
+		this.member_id = member_id;
+		this.ea = ea;
+		this.price = price;
+		this.address = address;
+		this.dAddress = dAddress;
+		this.phone = phone;
+		this.status = status;
+		this.receiver = receiver;
+		this.order_date = order_date;
+		this.item_name = item_name;
+		this.file_name = file_name;
+		this.review_indent = review_indent;
+	}
+
+
 
 
 	public OrdersVO(int order_id, int item_no, String member_id, int ea, int price, String address, String dAddress,
@@ -87,16 +113,23 @@ public class OrdersVO implements Serializable{
 		ORDERDATE = oRDERDATE;
 	}
 
+	
+	
+	public int getReview_indent() {
+		return review_indent;
+	}
+
+	public void setReview_indent(int review_indent) {
+		this.review_indent = review_indent;
+	}
 
 	public Date getOrder_date() {
 		return order_date;
 	}
 
-
 	public void setOrder_date(Date order_date) {
 		this.order_date = order_date;
 	}
-
 
 	public String getReceiver() {
 		return receiver;

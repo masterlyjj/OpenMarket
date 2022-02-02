@@ -68,10 +68,10 @@ public class ReviewController {
 
 	@RequestMapping(value = "{board_no}", method = RequestMethod.GET)
 	public List<ReviewVO> getAllReplies(@PathVariable("board_no") int board_no) {
-
+		
 		return rService.getAllReplies(board_no);
 	}
-
+	
 	@RequestMapping(value = "{board_no}/{curPage}", method = RequestMethod.GET)
 	public PageTO<ReviewVO> getRepliesPage(@PathVariable("board_no") int board_no,
 			@PathVariable("curPage") int curPage) {

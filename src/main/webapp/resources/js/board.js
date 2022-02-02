@@ -65,15 +65,13 @@ function getMyAllReplies(member_id, el){
 function Myreplyform(member_id, review_updatedate, review_content, review_grade , review_no){
 	
 	var msg = `
-						   <div id="review_view" class="jumbotron" style="padding: 30px 20px 30px 20px">
+						   <div id="review_view" class="jumbotron" style="padding: 15px">
 
-					
-
-					        <span class="float-left">작성자 : ${member_id}</span>&emsp; | &emsp; <span class="card-text review_grade"> 평점 : ${review_grade}</span> <span class="float-right"  style="opacity: 0.5">작성시간 ${review_updatedate}</span>
+					        <span class="float-left">작성자 : ${member_id}</span><br>
+							<span class="card-text review_grade"> 평점 : ${review_grade}</span> <br>
+							<span class="float-right" style="opacity: 0.5">작성시간 ${review_updatedate}</span>
 								<br>
 								<hr>			   
-
-						      
 								
 					         <p class="card-text review_content font-weight-bold">${review_content}</p>
 							 
@@ -156,15 +154,14 @@ function getAllReplies(board_no, el){
 function replyform(member_id, review_updatedate, review_content, review_grade , review_no){
 	
 	var msg = `
-						   <div id="review_view" class="jumbotron" style="padding: 30px 20px 30px 20px">
-
-					        <span class="float-left">작성자 : ${member_id}</span>&emsp; | &emsp; <span class="card-text"> 
-								만족도 : 
+						   <div id="review_view" class="jumbotron" style="padding: 15px; margin-bottom:10px; height:130px;">
+					        <span class="float-left">작성자 : ${member_id}</span>
+							<span class="float-right"  style="opacity: 0.5">작성시간 ${review_updatedate}</span><br>
+							<span class="card-text"> 별점 : 
 							<span class="star">★★★★★<span class="empty_star" style="width : ${review_grade*20}%;">★★★★★</span>
 							  <input type="range" name="review_grade" value="${review_grade}" step="1" min="0" max="5" readonly;>
 							</span>
-								</span> <span class="float-right"  style="opacity: 0.5">작성시간 ${review_updatedate}</span><br>
-					         <p class="card-text review_content font-weight-bold">${review_content}</p>
+					         <p class="card-text review_content font-weight-bold">${review_content}</p><br>
 							 
 							<div class="asd">
 					         <a data-member_id="${member_id}" data-review_no="${review_no}" href="#" class="btn btn-light btn-sm btn_review_updateui_form" data-toggle="modal" data-target="#staticBackdrop">수정</a>

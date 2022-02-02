@@ -13,6 +13,7 @@ import kr.co.domain.ReviewVO;
 import kr.co.repository.BoardDAO;
 import kr.co.repository.FileDAO;
 import kr.co.repository.ItemDAO;
+import kr.co.repository.OrderDAO;
 import kr.co.repository.ReviewDAO;
 
 @Service
@@ -20,6 +21,9 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Inject
 	private ReviewDAO rDao;
+	
+	@Inject
+	private OrderDAO oDao;
 
 	@Inject
 	private BoardDAO bDao;
@@ -30,10 +34,13 @@ public class ReviewServiceImpl implements ReviewService {
 	@Inject
 	private ItemDAO iDao;
 
+	@Transactional
 	@Override
 	public void insert(Map<String, Object> map) {
 		
 		rDao.insert(map);
+		int order_id = (int) map.get("order_id");
+		oDao.insertReview(order_id);
 
 	}
 

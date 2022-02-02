@@ -29,7 +29,6 @@ public class ReviewDAOImpl implements ReviewDAO {
 	
 	@Override
 	public int getMyAmountReplyByBno(String member_id) {
-		// TODO Auto-generated method stub
 		return sqlSession.selectOne(NS + ".getMyAmountReplyByBno", member_id);
 	}
 
@@ -49,7 +48,6 @@ public class ReviewDAOImpl implements ReviewDAO {
 
 	@Override
 	public int getAmountReplyByBno(int board_no) {
-		// TODO Auto-generated method stub
 		return sqlSession.selectOne(NS + ".getAmountReplyByBno", board_no);
 	}
 	
@@ -67,13 +65,11 @@ public class ReviewDAOImpl implements ReviewDAO {
 
 	@Override
 	public List<ReviewVO> getAllReplies(int board_no) {
-		// TODO Auto-generated method stub
 		return sqlSession.selectList(NS + ".getAllReplies", board_no);
 	}
 	
 	@Override
 	public List<ReviewVO> getMyAllReplies(String member_id) {
-		// TODO Auto-generated method stub
 		return sqlSession.selectList(NS + ".getMyAllReplies", member_id);
 	}
 
@@ -90,7 +86,6 @@ public class ReviewDAOImpl implements ReviewDAO {
 
 	@Override
 	public int getAmount() {
-		// TODO Auto-generated method stub
 		return sqlSession.selectOne(NS+".getAmount");
 	}
 
@@ -99,11 +94,5 @@ public class ReviewDAOImpl implements ReviewDAO {
 		RowBounds rbs = new RowBounds(pt.getStartNum() - 1, pt.getPerPage());
 		return sqlSession.selectList(NS +".listOfAll", null, rbs);
 	}
-
-
-
-
-
-
 
 }

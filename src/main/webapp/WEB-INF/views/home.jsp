@@ -17,51 +17,64 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="/resources/js/file.js" type="text/javascript"></script>
+<style type="text/css">
+
+.ranklist{
+	text-align-last: center;
+}
+.item_ranklist{
+
+margin-left: 50px;
+}
+
+</style>
 </head>
 <body>
-
 	<jsp:include page="header.jsp" />
-
 	<jsp:include page="sidebar.jsp" />
 
-	<div class="container ">
-		<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<img style="height: 400px;" src="/resources/img/manager00.jpg" class="d-block w-100" alt="...">
-				</div>
-				<div class="carousel-item">
-					<img style="height: 400px;" src="/resources/img/manager02.jpg" class="d-block w-100" alt="...">
-				</div>
-				<div class="carousel-item">
-					<img style="height: 400px;" src="/resources/img/manager03.png" class="d-block w-100" alt="...">
-				</div>
-			</div>
+	<div class="item_ranklist">
+		<div class="ranklist-header">
+		<h4>많이 찾는 상품</h4>
 		</div>
-		<div style="margin-top: 100px;">
-		<h4>전체 상품 랭킹</h4>
 		<div class="uploadedList row row-cols-3 row-cols-sm-4 row-cols-md-5 g-3">
-		</div>
 		</div>
 	</div>
 
 
 
 	<jsp:include page="footer.jsp" />
-<script type="text/javascript">
-$(document).ready(function(){
- 	var vo = "${list}";
-	var arr = eval(vo);
-	for (var i=0; i<8; i++){
-		var item_no = arr[i].item_no;
-		var item_name = arr[i].item_name;
-		var file_name = arr[i].file_name;
-		var i = i;
-		var item = uploadedItemForRank(file_name,item_no,item_name,i);
-		$(".uploadedList").append(item);
+	<script type="text/javascript">
 	
-	}
-});		
-</script>
+	$(document).ready(function() {
+
+		var acc = document.getElementsByClassName("accordion");
+		var i;
+
+		for (i = 0; i < acc.length; i++) {
+			acc[i].addEventListener("click", function() {
+				this.classList.toggle("active");
+				var panel = this.nextElementSibling;
+				if (panel.style.display === "block") {
+					panel.style.display = "none";
+				} else {
+					panel.style.display = "block";
+				}
+			});
+		}
+					var vo = "${list}";
+					var arr = eval(vo);
+					for (var i = 0; i < 8; i++) {
+						var item_no = arr[i].item_no;
+						var item_name = arr[i].item_name;
+						var file_name = arr[i].file_name;
+						var i = i;
+						var item = uploadedItemForRank(file_name, item_no,
+								item_name);
+						$(".uploadedList").append(item);
+
+					}
+				});
+	</script>
 </body>
 </html>

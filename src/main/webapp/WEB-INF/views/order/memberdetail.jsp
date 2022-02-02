@@ -15,15 +15,22 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
  
 <style type="text/css">
- .btn_ex_re{
- border-radius: 5px;	
-  }
+.btn_ex_re{
+border-radius: 5px;	
+}
+
 .btn_cancel{
- border-radius: 5px;	
- }
+border-radius: 5px;	
+}
+
 img {
 width: 100px;
 height: 100px;
+}
+
+.container {
+max-width: 1050px;
+float: left;
 }
 </style>
 </head>
@@ -35,11 +42,11 @@ height: 100px;
 
 		<div class="wrap-detail">
 			<form action="/exchangeRefund/requestpage">
-				<input type="hidden" name="member_id" value=""> <input
-					type="hidden" name="order_id" value=""> <input
-					type="hidden" name="price" value=""> <input type="hidden"
-					name="order_date" value=""> <input type="hidden" name="ea"
-					value="">
+				<input type="hidden" name="member_id" value=""> 
+				<input type="hidden" name="order_id" value=""> 
+				<input type="hidden" name="price" value=""> 
+				<input type="hidden" name="order_date" value=""> 
+				<input type="hidden" name="ea" value="">
 
 				<table class="table">
 					<thead>
@@ -58,35 +65,29 @@ height: 100px;
 					<tbody>
 						<c:forEach items="${pt.list}" var="ovo" varStatus="i">
 							<tr class="stat">
-								<td><a style="text-decoration: none; color: #000;"
-									href="/order/orderpage/${ovo.order_id}">${ovo.order_id}</a></td>
-								<td><div data-item_no="${ovo.item_no}"
-										data-item_name="${ovo.item_name}"
-										data-file_name="${ovo.file_name}"
-										class="uploadedList${i.index}"></div></td>
-								<td><a style="text-decoration: none; color: #000;"
-									href="/item/read/${ovo.item_no}">${ovo.item_name}</a></td>
+								<td><a style="text-decoration: none; color: #000;" href="/order/orderpage/${ovo.order_id}">${ovo.order_id}</a></td>
+								<td><div data-item_no="${ovo.item_no}" data-item_name="${ovo.item_name}" data-file_name="${ovo.file_name}" class="uploadedList${i.index}"></div></td>
+								<td><a style="text-decoration: none; color: #000;" href="/item/read/${ovo.item_no}">${ovo.item_name}</a></td>
 								<td>${ovo.ea}</td>
 								<td>${ovo.price}</td>
 								<td>${ovo.status}</td>
-								<td><fmt:formatDate value="${ovo.order_date}"pattern="yyyy-MM-dd HH:mm" /></td>
-								<td><c:if test="${ovo.status == '상품 준비 중'}">
-										<button data-ea="${ovo.ea}"
-											data-order_date="${ovo.order_date}" data-price="${ovo.price}"
-											data-member_id="${ovo.member_id}"
-											data-order_id="${ovo.order_id}" class="btn_cancel">주문취소</button>
+								<td><fmt:formatDate value="${ovo.order_date}" pattern="yyyy-MM-dd HH:mm" /></td>
+								<td class="area-button"><c:if test="${ovo.status == '상품 준비 중'}">
+										<button data-ea="${ovo.ea}" data-order_date="${ovo.order_date}" data-price="${ovo.price}"
+											data-member_id="${ovo.member_id}" data-order_id="${ovo.order_id}" class="btn_cancel">주문취소</button>
 
-									</c:if> <c:if test="${ovo.status == '교환' || ovo.status == '환불'}">
+									</c:if> 
+									<c:if test="${ovo.status == '교환' || ovo.status == '환불'}">
 										<p>진행중</p>
-									</c:if> <c:if test="${ovo.status == '배송완료'}">
-										<button data-ea="${ovo.ea}"
-											data-order_date="${ovo.order_date}" data-price="${ovo.price}"
-											data-member_id="${ovo.member_id}"
-											data-order_id="${ovo.order_id}" class="btn_ex_re">교환/환불</button>
-										<input class="btn_review" data-item_no="${ovo.item_no}"
-											type="button" value="리뷰쓰기" />
-									</c:if> <c:if
-										test="${ovo.status == '교환완료' || ovo.status == '환불완료' || ovo.status == '취소'}">
+									</c:if>
+									 <c:if test="${ovo.status == '배송완료'}">
+										<button data-ea="${ovo.ea}" data-order_date="${ovo.order_date}" data-price="${ovo.price}" data-member_id="${ovo.member_id}"
+											data-order_id="${ovo.order_id}" class="btn_ex_re">교환/환불</button></c:if>
+										<c:if test="${ovo.status == '배송완료' && ovo.review_indent == 0}">
+											<input id="btn_inst" class="btn_review" data-order_id="${ovo.order_id}" data-item_no="${ovo.item_no}" type="button" value="리뷰쓰기" />
+										</c:if>
+									
+									 <c:if test="${ovo.status == '교환완료' || ovo.status == '환불완료' || ovo.status == '취소'}">
 										<p>완료</p>
 									</c:if></td>
 							</tr>
@@ -104,6 +105,7 @@ height: 100px;
 	<script type="text/javascript">
 	
 $(document).ready(function() {
+	
 	var vo ="${pt.list}";
 	var arr = eval(vo);
 	for(var i=0; i<arr.length; i++){
@@ -158,8 +160,9 @@ $(document).ready(function() {
 	
 	$(".btn_review").click(function(){
 		var item_no = $(this).attr("data-item_no");
+		var order_id = $(this).attr("data-order_id");
 		$.getJSON("/board/getBoard_no/"+item_no, function(board_no) {
-			var url="../../board/reviewinsert/"+board_no;
+			var url="../../board/reviewinsert/"+board_no+"/"+order_id;
 	        window.open(url,"","width=400,height=500,left=600");
 		});
 	});

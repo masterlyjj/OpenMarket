@@ -10,7 +10,11 @@ CREATE TABLE board(
 	CONSTRAINT pk_item_board_no PRIMARY KEY(board_no),
 	CONSTRAINT fk_item_board_item_no FOREIGN KEY(item_no) REFERENCES item(item_no) ON DELETE CASCADE
 )
-
+DROP Table board
+DROP table item
+SELECT * FROM USER_TABLES
+DROP TABLE EXCHANGE_REFUND
+DROP TABLE QNA
 CREATE SEQUENCE seq_board_no
 
 CREATE TABLE review(
@@ -20,7 +24,6 @@ CREATE TABLE review(
 	review_content VARCHAR2(100) NOT NULL,
 	review_regdate DATE DEFAULT SYSDATE,
 	review_updatedate DATE DEFAULT SYSDATE,
-	review_indent NUMBER DEFAULT 0,
 	review_grade NUMBER DEFAULT 5,
 	CONSTRAINT pk_board_review_no PRIMARY KEY(review_no),
 	CONSTRAINT fk_board_review_board_no FOREIGN KEY(board_no) REFERENCES board(board_no) ON DELETE CASCADE,
