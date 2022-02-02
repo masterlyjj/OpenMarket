@@ -42,7 +42,7 @@ public class OrderController {
 
 	@Inject
 	private ItemService iService;
-
+	
 	@RequestMapping(value = "/insert/{member_id}", method = RequestMethod.GET)
 	public String insertui(@PathVariable("member_id") String member_id, Model model) {
 
@@ -167,11 +167,10 @@ public class OrderController {
 
 	@RequestMapping(value = "/detail/{member_id}", method = RequestMethod.GET)
 	public String detail(PageTO<OrdersVO> pt, @PathVariable("member_id") String member_id, Model model) {
-
 		pt.setCurPage(1);
 
 		pt = oService.list(pt, member_id);
-
+			
 		model.addAttribute("pt", pt);
 		model.addAttribute("member_id", member_id);
 
@@ -185,7 +184,7 @@ public class OrderController {
 		pt.setCurPage(curPage);
 
 		pt = oService.list(pt, member_id);
-
+		
 		model.addAttribute("pt", pt);
 		model.addAttribute("member_id", member_id);
 

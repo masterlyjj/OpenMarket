@@ -17,6 +17,10 @@ img {
 width: 100px;
 height: 100px;
 }
+.container {
+max-width: 750px;
+float: left;
+}
 </style>
 </head>
 <body>

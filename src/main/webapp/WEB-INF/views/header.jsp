@@ -14,13 +14,11 @@ body {
 #rolling {
     outline-color: activeborder;
     background-color: inherit;
-    
 }
 
 #roll a {
     color: white;
     text-decoration: none;
- 
 }
 
 #roll a:hover {
@@ -118,19 +116,18 @@ display: inline-table;
 
 .put {
 margin-top : 15px;
-display: inline-block;
+
 }
 #search_btn {
 display : inline-block;
 background-color: white;
 height : 38px;
-
 }
 </style>
 
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="div1">
-  <span class="navbar-brand mb-0 h1"><a class="nav-link text-light" href="/">DAPAN&DA</a></span>
+  <span class="navbar-brand mb-0 h1"><a class="nav-link text-light" href="/">중장비마켓</a></span>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

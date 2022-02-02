@@ -26,6 +26,11 @@ img {
 	width: 100px;
 	height: 100px;
 }
+
+.container {
+text-align : center;
+float: left;
+}
 </style>
 </head>
 <body class="cart_body">

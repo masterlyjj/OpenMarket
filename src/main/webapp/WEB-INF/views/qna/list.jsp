@@ -57,11 +57,13 @@ white-space : pre-line;
 word-break: break-all;
 }
 .pagingline {
-display : table-row;
-justify-content: space-around;
-position: relative;
-top: 10px;
-left : 365px;
+margin-top: 10px;
+width : 720px;
+}
+
+.container {
+max-width: 750px;
+float: left;
 }
 </style>
 <body>

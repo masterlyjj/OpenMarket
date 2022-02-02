@@ -82,6 +82,15 @@ a {
 	position: relative;
 	min-height: 1000px;
 }
+.container {
+	max-width: 1050px;
+	float: left;
+}
+.container-fluid{
+	max-width: 1050px;
+	float: left;
+}
+
 </style>
 
 </head>
@@ -100,14 +109,8 @@ a {
 		<button class="updateui">수정 화면</button>
 		</c:if>
 </div>
-	<div style="border: 1px solid #ddd; margin-right: 15%; margin-bottom: 20px" class="container-fluid"	>
-	
-		<div class="container-fluid" >
+	<div style="margin-bottom: 20px" class="container-fluid">
 		<jsp:include page="../review/list.jsp" />
-		</div>
-		
-		<br>	
-		
 	</div>
 	
 	<div class="quickmenu" >
@@ -119,7 +122,7 @@ a {
 		
 	</div>
 	<br>
-	<div style="border: 1px solid #ddd; float: left; width: 85%">
+	<div style="float: left; width: 750px">
 <jsp:include page="../qna/list.jsp" />
 </div>
 	<script>

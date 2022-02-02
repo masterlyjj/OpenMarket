@@ -43,6 +43,11 @@
     overflow: hidden;
     pointer-events: none;
   }
+  
+  .container {
+max-width: 750px;
+float: left;
+}
 </style>
 <body>
 

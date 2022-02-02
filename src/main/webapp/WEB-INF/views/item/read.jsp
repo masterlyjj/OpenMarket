@@ -36,6 +36,17 @@
 	select {
 		width: 200px;
 	}
+	.container {
+		width : 750px;
+		float: left;
+	}
+	.container-fluid {
+		max-width: 750px;
+		float: left;
+	}
+	.item-container {
+		width: 750px;
+	}
 </style>
 </head>
 <body>
@@ -44,7 +55,7 @@
 	
 	<div class="row mb-2 container" style="margin-left: 5%;">
     <div class="col-md-10">
-      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="row g-0 overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative item-container">
         <div class="uploadedList"></div>
         <div class="col p-4 d-flex flex-column position-static">
           <strong class="d-inline-block mb-2 text-primary">${ivo.item_category}</strong>

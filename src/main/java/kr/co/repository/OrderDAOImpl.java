@@ -91,4 +91,10 @@ public class OrderDAOImpl implements OrderDAO {
 		return sqlSession.selectList(NS + ".list", member_id, rbs);
 	}
 
+	@Override
+	public void insertReview(int order_id) {
+		sqlSession.update(NS + ".insertReview", order_id);
+		
+	}
+
 }

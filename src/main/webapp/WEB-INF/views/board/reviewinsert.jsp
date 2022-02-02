@@ -76,6 +76,7 @@
 	</div>
 
 	<script type="text/javascript">
+		var order_id = ${order_id};
 		var board_no = ${board_no};
 		function range(target){
 			$(".empty_star").css("width",""+(target.value)*20+"%");
@@ -113,17 +114,11 @@
 						board_no : board_no,
 						member_id : member_id,
 						review_content : review_content,
-						review_grade : review_grade
+						review_grade : review_grade,
+						order_id : order_id
 					}),
 					success : function(result) {
 						if (result == "SUCCESS") {
-							$("#member_id").val("");
-							$("#review_content").val("");
-							$("#review_grade").val("");
-							$("#reviewContainer").hide();
-
-							getAllReplies(board_no, $("#replies"));
-
 							opener.parent.location.reload();
 							window.close()
 							//팝업창 닫기 및 부모창 새로고침

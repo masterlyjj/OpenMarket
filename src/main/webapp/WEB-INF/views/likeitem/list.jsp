@@ -13,11 +13,16 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="/resources/js/file.js" type="text/javascript"></script>
 <style type="text/css">
-  	img {
-	width: 100px;
-	height: 100px;
-	}
-  </style>
+img {
+width: 100px;
+height: 100px;
+}
+	
+.container {
+max-width: 750px;
+float: left;
+}
+</style>
 </head>
 
 <body>

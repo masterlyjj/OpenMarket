@@ -14,6 +14,10 @@
 	</selectKey>
 	</insert>
 	
+	<update id="insertReview">
+	UPDATE orders SET review_indent = review_indent+1 WHERE order_id = #{order_id}
+	</update>
+	
 	<select id="list" resultType="kr.co.domain.OrdersVO">
 	SELECT * FROM orders WHERE member_id = #{member_id} ORDER BY order_date desc
 	</select>
