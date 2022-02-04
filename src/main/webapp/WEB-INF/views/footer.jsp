@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<div class="container" style="width:100%; margin-left:140px;">
+<div class="container" style="max-width:920px%; margin-left:19%">
   <footer class="py-3 my-4" id="div4">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
 		<li class="nav-item"><a href="/" class="nav-link px-2 text-muted">홈</a></li>

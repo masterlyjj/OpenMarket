@@ -30,12 +30,17 @@
   	#backhome{
   		margin-top: 10px; 
   	}
+  	
+  	.input-group-text{
+	width: 80px;
+	justify-content: center;
+	}
 </style>
 </head>
 <body>
 
 <jsp:include page="../header.jsp" />
-<jsp:include page="../sidebar.jsp" />
+<jsp:include page="../mypage/mSidebar.jsp" />
 
 <c:if test="${vo.member_id == login.member_id || not empty managerLogin}">
 <div class="row mb-2 container">
@@ -51,8 +56,7 @@
 					<div class="input-group mb-2">
 						<span class="input-group-text">이름</span> 
 						<input readonly class="form-control" value="${vo.member_name}">
-					</div>						
-						
+					</div>				
 					<div class="input-group mb-2">
 						<span class="input-group-text">생년월일</span> 
 						<input readonly class="form-control" value="${fn:substring(vo.member_birthday, 0, 10)}">

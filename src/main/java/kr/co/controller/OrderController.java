@@ -165,6 +165,20 @@ public class OrderController {
 		return "order/orderpage";
 	}
 
+	@RequestMapping(value = "/myorder/{member_id}", method = RequestMethod.GET)
+	public ResponseEntity<PageTO<OrdersVO>> myorder(PageTO<OrdersVO> pt, @PathVariable("member_id") String member_id) {
+		ResponseEntity<PageTO<OrdersVO>> entity = null;
+		pt.setCurPage(1);
+		try {
+			pt = oService.list(pt, member_id);
+			entity = new ResponseEntity<PageTO<OrdersVO>>(pt,HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<PageTO<OrdersVO>>(HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}
+	
 	@RequestMapping(value = "/detail/{member_id}", method = RequestMethod.GET)
 	public String detail(PageTO<OrdersVO> pt, @PathVariable("member_id") String member_id, Model model) {
 		pt.setCurPage(1);
@@ -174,7 +188,7 @@ public class OrderController {
 		model.addAttribute("pt", pt);
 		model.addAttribute("member_id", member_id);
 
-		return "order/memberdetail";
+		return "mypage/myorder";
 	}
 
 	@RequestMapping(value = "/detail/{member_id}/{curPage}", method = RequestMethod.GET)
@@ -188,7 +202,7 @@ public class OrderController {
 		model.addAttribute("pt", pt);
 		model.addAttribute("member_id", member_id);
 
-		return "order/memberdetail";
+		return "mypage/myorder";
 	}
 
 	@RequestMapping(value = "/detailAll", method = RequestMethod.GET)

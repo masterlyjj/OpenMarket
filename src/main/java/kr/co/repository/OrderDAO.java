@@ -32,5 +32,9 @@ public interface OrderDAO {
 
 	public void insertReview(int order_id);
 
+	public List<OrdersVO> sellerCheckOrder(PageTO<OrdersVO> pt, String member_id);
+
+	public int getAmountSeller(String member_id);
+
 
 }

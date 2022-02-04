@@ -2,10 +2,8 @@
  * 
  */
 function categorylist(category) {
-	var msg = `<li class="nav-item">
-			<a class="nav-link active text-muted" href="/item/list/${category}/1">
-				<span></span>${category}<span class="sr-only"></span>
-			</a>
- 		</li>`;
+	var msg = `
+			<li><a class="head" href="/item/list/${category}/1">${category}</a></li>
+ 		`;
 	return msg;
 }

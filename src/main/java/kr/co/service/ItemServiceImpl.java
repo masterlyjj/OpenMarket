@@ -191,4 +191,21 @@ public class ItemServiceImpl implements ItemService {
 		return list;
 	}
 
+	@Override
+	public PageTO<ItemVO> listBySeller(PageTO<ItemVO> pt,String member_id) {
+			int amount = iDao.getAmountBySeller(member_id);
+			pt.setAmount(amount);
+			pt.setPerPage(12);
+
+			List<ItemVO> list = iDao.listBySeller(pt, member_id);
+			pt.setList(list);
+
+			return pt;
+	}
+
+	@Override
+	public int getQuantity(int item_no) {
+		return iDao.getQuantity(item_no);
+	}
+
 }

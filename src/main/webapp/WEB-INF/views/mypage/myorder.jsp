@@ -35,7 +35,7 @@ float: left;
 </style>
 </head>
 	<jsp:include page="../header.jsp" />
-	<jsp:include page="../sidebar.jsp" />
+	<jsp:include page="mSidebar.jsp" />
 <body>
 	<div class="container" style="font-size: small;">
 		<h2>주문내역</h2>
@@ -97,7 +97,7 @@ float: left;
 			</form>
 		</div>
 		<div style="margin-left: 40%">
-			<jsp:include page="pageForMember.jsp" />
+			<jsp:include page="pageorder.jsp" />
 		</div>
 	</div>
 

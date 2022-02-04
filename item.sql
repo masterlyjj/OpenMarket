@@ -9,8 +9,9 @@ CONSTRAINT pk_cart_no PRIMARY KEY(cart_no),
 CONSTRAINT fk_cart_member_id FOREIGN KEY(member_id)  REFERENCES member(member_id) ON DELETE CASCADE,
 CONSTRAINT fk_cart_item_no FOREIGN KEY(item_no) REFERENCES item(item_no) ON DELETE CASCADE 
 )
-
+SELECT * FROM member
 CREATE SEQUENCE seq_cart_no
+
 CREATE TABLE fnq(
    fnq_no NUMBER,
    manager_id VARCHAR2(15) NOT NULL,
@@ -23,6 +24,7 @@ CREATE TABLE fnq(
    CONSTRAINT fk_fnq_manager_id FOREIGN KEY(manager_id) REFERENCES manager(manager_id) ON DELETE CASCADE
 )
 UPDATE item SET item_amount=item_amount-1 WHERE item_no = 85
+
 CREATE TABLE manager(
    manager_id VARCHAR2(15),
    manager_pw VARCHAR2(15) NOT NULL,
@@ -33,8 +35,10 @@ CREATE TABLE manager(
    CONSTRAINT pk_manager_id PRIMARY KEY(manager_id)
 )
 insert into manager (manager_id,manager_pw,manager_name,manager_email,manager_phone,manager_code) values ()
+
 CREATE TABLE item(
 	item_no NUMBER,
+	seller_id VARCHAR2(15)NOT NULL,
 	item_name VARCHAR2(120) NOT NULL,
 	item_category VARCHAR2(60) NOT NULL,
 	item_size VARCHAR2(21) NOT NULL,
@@ -44,8 +48,13 @@ CREATE TABLE item(
 	item_amount NUMBER NOT NULL,
 	item_regdate DATE DEFAULT SYSDATE,
 	CONSTRAINT pk_item_no PRIMARY KEY(item_no),
+	CONSTRAINT fk_seller_id FOREIGN KEY(seller_id) REFERENCES member(member_id) ON DELETE CASCADE,
 	CONSTRAINT fk_item_name FOREIGN KEY(item_name) REFERENCES category(item_name) ON DELETE CASCADE
 )
+
+DROP TABLE item
+ALTER TABLE item ADD member_id VARCHAR2(15)
+
 create table orders(
    order_id NUMBER NOT NULL,
    item_no NUMBER,
@@ -62,6 +71,7 @@ create table orders(
    CONSTRAINT fk_orderr_item_no FOREIGN KEY(item_no) REFERENCES item(item_no) ON DELETE CASCADE,
    CONSTRAINT fk_orderr_member_id FOREIGN KEY(member_id) REFERENCES member(member_id) ON DELETE CASCADE
 )
+
 SELECT item.item_no as item_no, 
       TO_CHAR(add_months(sysdate, -1)) as ORDERDATE,
       item.item_name as item_name
@@ -100,6 +110,7 @@ select * from search
 SELECT * FROM like_item
 insert into like_item (like_no ,item_no, member_id) values (1,72,'m001')
 SELECT COUNT(*) FROM like_item WHERE item_no = '72' AND member_id = 'm001'
+
 CREATE TABLE search(
    search_no NUMBER,
    member_id VARCHAR2(15),
@@ -171,6 +182,7 @@ search_date DATE DEFAULT SYSDATE,
 CONSTRAINT pk_search_no PRIMARY KEY(search_no), 
 CONSTRAINT fk_member_id FOREIGN KEY(member_id) REFERENCES member(member_id) ON DELETE CASCADE
 )
+
 select OBJECT_NAME, OBJECT_TYPE from user_objects
 select * from search
 drop table search

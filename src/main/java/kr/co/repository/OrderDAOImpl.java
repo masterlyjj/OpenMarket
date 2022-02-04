@@ -97,4 +97,16 @@ public class OrderDAOImpl implements OrderDAO {
 		
 	}
 
+	@Override
+	public List<OrdersVO> sellerCheckOrder(PageTO<OrdersVO> pt, String member_id) {
+		RowBounds rbs = new RowBounds(pt.getStartNum() - 1, pt.getPerPage());
+
+		return sqlSession.selectList(NS + ".sellerCheckOrder", member_id, rbs);
+	}
+
+	@Override
+	public int getAmountSeller(String member_id) {
+		return sqlSession.selectOne(NS + ".getAmountSeller", member_id);
+	}
+
 }

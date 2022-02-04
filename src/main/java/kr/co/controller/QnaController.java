@@ -66,7 +66,7 @@ public class QnaController {
 
 		model.addAttribute("pt", pt);
 
-		return "qna/listForMember";
+		return "mypage/myqna";
 	}
 
 	@RequestMapping(value = "/listForMember/{member_id}/{curPage}", method = RequestMethod.GET)
@@ -79,7 +79,7 @@ public class QnaController {
 
 		model.addAttribute("pt", pt);
 
-		return "qna/listForMember";
+		return "mypage/myqna";
 	}
 
 	@RequestMapping(value = "/listOfAll", method = RequestMethod.GET)

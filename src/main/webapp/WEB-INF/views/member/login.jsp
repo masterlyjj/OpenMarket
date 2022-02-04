@@ -39,11 +39,6 @@ form {
 	position: relative;
 	margin: 10px 0;
 }
-.container {
-	margin-top: 100px;
-	margin-bottom: 300px;
-	width: 300px;
-}
 </style>
 
 </head>
@@ -52,7 +47,7 @@ form {
 	<jsp:include page="../header.jsp" />
 	<jsp:include page="../sidebar.jsp" />
 
-	<div class="container">
+	<div class="container" style="margin-top: 100px; margin-bottom: 300px; width: 300px;">
 		<form class="loginfrom" action="/member/login" id="loginform" method="post">
 			<h1 class="h3 mb-3 font-weight-normal">Login</h1>
 			<hr>

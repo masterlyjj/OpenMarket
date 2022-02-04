@@ -15,8 +15,8 @@
   <script src="/resources/js/file.js" type="text/javascript"></script>
 </head>
 <body>
-	<jsp:include page="../header.jsp" />
-	<jsp:include page="../sidebar.jsp" />
+	<jsp:include page="../seller/sellerheader.jsp" />
+	<jsp:include page="../seller/sellersidebar.jsp" />
 <div class="container" style=" font-size : small;">
 	<h4>상품 리스트</h4>
 	<a class="btn btn-outline-primary btn-sm" style="float: right;" href="/item/insert">상품등록</a>

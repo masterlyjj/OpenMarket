@@ -30,5 +30,7 @@ public interface MemberDAO {
 
 	// 비밀번호 체크
 	public int passChk(MemberVO vo);
+	//판매자 등록
+	public void requestResist(String member_id);
 
 }

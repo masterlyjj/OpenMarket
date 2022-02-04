@@ -11,4 +11,21 @@ CREATE TABLE fnq(
 )
 DROP TABLE fnq
 select * from fnq
+select * from ORDERS
+select * from ITEM
 INSERT INTO fnq (fnq_no, manager_id, fnq_title, fnq_content) VALUES (1, 'm001', '첫번째 공지사항', '공지사항 내용')
+
+SELECT COUNT(*) FROM (SELECT * FROM orders WHERE item_no IN (SELECT item_no FROM item WHERE member_id = 'm001'))
+SELECT * FROM orders WHERE item_no IN (SELECT item_no FROM item WHERE member_id = 'm001')
+select item_no from item where seller_id = 'm001'
+select * from user_tables
+DROP TABLE ITEM_FILE
+DROP TABLE ITEM
+DROP TABLE QNA
+DROP TABLE EXCHANGE_REFUND
+DROP TABLE CART
+DROP TABLE ORDERS
+DROP TABLE BOARD
+DROP TABLE SEARCH
+DROP TABLE MEMBER
+DROP TABLE FNQ

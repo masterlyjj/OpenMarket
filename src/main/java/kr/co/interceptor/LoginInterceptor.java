@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import kr.co.domain.ManagerVO;
 import kr.co.domain.MemberVO;
 
 
@@ -28,9 +29,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
 		Map<String, Object> map = modelAndView.getModel();		
 		MemberVO login = (MemberVO) map.get("login");
-		
 		HttpSession session = request.getSession();
-		session.setAttribute("login", login);	
+		session.setAttribute("login", login);
+		
 		
 		
 		 String where = (String) session.getAttribute("where");

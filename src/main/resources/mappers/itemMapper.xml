@@ -7,9 +7,9 @@
 
 	<insert id="insert">
 		INSERT INTO item
-		(item_no,item_name,item_category,item_size,item_color,item_price,discount_percentage,item_amount)
+		(item_no,item_name,item_category,item_size,item_color,item_price,discount_percentage,item_amount,seller_id)
 		VALUES
-		(seq_item_no.NEXTVAL,#{item_name},#{item_category},#{item_size},#{item_color},#{item_price},#{discount_percentage},#{item_amount})
+		(seq_item_no.NEXTVAL,#{item_name},#{item_category},#{item_size},#{item_color},#{item_price},#{discount_percentage},#{item_amount},#{member_id})
 		<selectKey order="AFTER" keyProperty="item_no" resultType="Integer">
 			SELECT seq_item_no.CURRVAL FROM dual
 		</selectKey>
@@ -33,6 +33,14 @@
 	
 	<select id="list" resultType="kr.co.domain.ItemVO">
 		select * from item where item_no in (select max(item_no) as item_no from item group by item_name) ORDER BY item_no DESC
+	</select>
+	
+	<select id="getAmountBySeller" resultType="Integer">
+		SELECT COUNT(*) FROM item WHERE seller_id = #{seller_id}
+	</select>
+	
+	<select id="listBySeller" resultType="kr.co.domain.ItemVO">
+		select * from item WHERE seller_id = #{seller_id}
 	</select>
 	
 	<delete id="delete">
@@ -104,6 +112,11 @@
 	</select>
 	
 	<update id="updateQuantity">
-		UPDATE item SET item_amount=item_amount-1 WHERE item_no = #{item_no}
+		UPDATE item SET item_amount=item_amount-#{ea} WHERE item_no = #{item_no}
 	</update>
+	
+	<select id="getQuantity" resultType="Integer">
+		SELECT item_amount FROM item WHERE item_no = #{item_no}
+	</select>
+	
 </mapper>

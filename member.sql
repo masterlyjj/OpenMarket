@@ -10,10 +10,11 @@ CREATE TABLE member(
    member_phone_number VARCHAR2(14) NOT NULL,
    member_regdate DATE DEFAULT SYSDATE,
    member_updatedate DATE DEFAULT SYSDATE,
+   member_authcode NUMBER DEFAULT 0,
    CONSTRAINT pk_member_id PRIMARY KEY(member_id)
 )
-
-ALTER TABLE member MODIFY member_phone_number VARCHAR2(14);
+UPDATE member SET member_name = '홍길동' WHERE member_id= 'm001'
+ALTER TABLE member MODIFY member_authcode NUMBER DEFAULT 0
 
 SELECT * FROM member
 SELECT * FROM member WHERE member_id = 'm002'

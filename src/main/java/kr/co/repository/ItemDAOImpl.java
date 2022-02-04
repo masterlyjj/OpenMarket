@@ -180,9 +180,28 @@ public class ItemDAOImpl implements ItemDAO {
 	}
 
 	@Override
-	public void updateQuantity(int item_no) {
+	public List<ItemVO> listBySeller(PageTO<ItemVO> pt, String seller_id) {
+		RowBounds rbs = new RowBounds(pt.getStartNum() - 1, pt.getPerPage());
 
-		sqlSession.update(NS + ".updateQuantity", item_no);
+		return sqlSession.selectList(NS + ".listBySeller", seller_id, rbs);
+	}
+
+	@Override
+	public int getAmountBySeller(String seller_id) {
+		return sqlSession.selectOne(NS + ".getAmountBySeller", seller_id);
+	}
+
+	@Override
+	public void updateQuantity(Map<String, Object> map) {
+		
+		sqlSession.update(NS + ".updateQuantity", map);
+		
+	}
+
+	@Override
+	public int getQuantity(int item_no) {
+		return sqlSession.selectOne (NS + ".getQuantity", item_no);
+		
 	}
 
 }

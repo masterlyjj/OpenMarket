@@ -24,7 +24,7 @@
 }
 .item_ranklist{
 
-margin-left: 50px;
+margin-left: 300px;
 }
 
 </style>
@@ -35,7 +35,7 @@ margin-left: 50px;
 
 	<div class="item_ranklist">
 		<div class="ranklist-header">
-		<h4>많이 찾는 상품</h4>
+		<h5>랭킹</h5>
 		</div>
 		<div class="uploadedList row row-cols-3 row-cols-sm-4 row-cols-md-5 g-3">
 		</div>
@@ -64,6 +64,9 @@ margin-left: 50px;
 		}
 					var vo = "${list}";
 					var arr = eval(vo);
+				if(arr==''){
+					$(".uploadedList").append("<p>상품을 등록해 주세요.</p>");
+				}else{
 					for (var i = 0; i < 8; i++) {
 						var item_no = arr[i].item_no;
 						var item_name = arr[i].item_name;
@@ -72,8 +75,8 @@ margin-left: 50px;
 						var item = uploadedItemForRank(file_name, item_no,
 								item_name);
 						$(".uploadedList").append(item);
-
 					}
+				}
 				});
 	</script>
 </body>

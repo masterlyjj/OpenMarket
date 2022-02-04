@@ -28,29 +28,21 @@ img {
 }
 
 .container {
-text-align : center;
+max-width: 750px;
 float: left;
 }
 </style>
 </head>
 <body class="cart_body">
 	<jsp:include page="../header.jsp" />
-	<jsp:include page="../sidebar.jsp" />
+	<jsp:include page="../mypage/mSidebar.jsp" />
 
 	<div class="container" id="frame">
+	<h4>장바구니 목록</h4>
 		<form action="">
-			<div id="frame2">
-				<span style="font-size: 20pt; font-weight: bold;">장바구니</span> <span
-					class="home">홈 > 장바구니</span>
-			</div>
-			<br />
-			<div>
+			
 				<table class="table">
 					<thead>
-						<tr>
-							<th colspan="10" style="text-align: left; padding-left: 10px;">장바구니
-								상품</th>
-						</tr>
 						<tr>
 							<th scope="col">#</th>
 							<th scope="col">상품 이미지</th>
@@ -85,14 +77,12 @@ float: left;
 						</c:forEach>
 						<c:set var="isTrue" value="false" />
 					</tbody>
-					<td></td>
 				</table>
 				<div
 					style="font-size: 15pt; font-weight: bold; width: 30%; margin-left: 70%;">
 					<span class="totalprice">결제금액
 						:&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;</span><span>원</span>
 				</div>
-			</div>
 		</form>
 		<div style="margin-left: 80%; margin-top: 5%">
 			<button class=" btn btn-outline-success btn-lg order">주문하기</button>

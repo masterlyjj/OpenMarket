@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>리뷰 목록</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -43,11 +43,10 @@
     overflow: hidden;
     pointer-events: none;
   }
-  
   .container {
-max-width: 750px;
-float: left;
-}
+	max-width: 750px;
+	float: left;
+	}
 </style>
 <body>
 
@@ -276,8 +275,6 @@ float: left;
 		$(window).on("load", function() {
 			var val = $("label[for='starpoint_1']").text();
 			var grade = $(".review_val").val();
-			console.log(grade);
-			console.log(val);
 
 		});
 	</script>
