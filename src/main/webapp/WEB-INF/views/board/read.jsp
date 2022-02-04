@@ -82,14 +82,6 @@ a {
 	position: relative;
 	min-height: 1000px;
 }
-.container {
-	max-width: 1050px;
-	float: left;
-}
-.container-fluid{
-	max-width: 1050px;
-	float: left;
-}
 
 </style>
 
@@ -109,7 +101,7 @@ a {
 		<button class="updateui">수정 화면</button>
 		</c:if>
 </div>
-	<div style="margin-bottom: 20px" class="container-fluid">
+	<div style="margin-bottom: 20px; margin-right:8%;" class="container-fluid">
 		<jsp:include page="../review/list.jsp" />
 	</div>
 	
@@ -122,7 +114,7 @@ a {
 		
 	</div>
 	<br>
-	<div style="float: left; width: 750px">
+	<div class="qna-area" style="max-width:920px;">
 <jsp:include page="../qna/list.jsp" />
 </div>
 	<script>

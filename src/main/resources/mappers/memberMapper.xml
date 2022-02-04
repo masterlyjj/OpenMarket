@@ -30,7 +30,7 @@
 </update>
 
 <select id="login" resultType="kr.co.domain.MemberVO">
-	SELECT member_id, member_name FROM member WHERE member_id = #{member_id} AND member_pw = #{member_pw}
+	SELECT member_id, member_name, member_authcode FROM member WHERE member_id = #{member_id} AND member_pw = #{member_pw}
 </select>
 
 <select id="deleteUI" resultType="kr.co.domain.MemberVO">
@@ -45,6 +45,9 @@
 	SELECT COUNT(*) FROM member WHERE member_id = #{member_id} AND member_pw = #{member_pw}
 </select>
 
+<update id="requestResist">
+	UPDATE member SET member_authcode = 1 WHERE member_id = #{member_id} 
+</update>
 
 
 

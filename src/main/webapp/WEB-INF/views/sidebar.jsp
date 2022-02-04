@@ -10,101 +10,218 @@
 <meta charset="utf-8">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="/resources/js/sidebar.js" type="text/javascript"></script>
 
 <title>사이드바 메뉴</title>
 <style type="text/css">
-.accordion {
-background-color: #eee;
-color: #444;
-cursor: pointer;
-padding: 18px;
-width: 100%;
-border: none;
-text-align: left;
-outline: none;
-font-size: 15px;
-transition: 0.4s;
+
+ul { list-style: none;
 }
 
-.active, .accordion:hover {
-background-color: #ccc;
+a { 
+text-decoration: none; color: black;
 }
 
-.panel {
-padding: 0 18px;
-display: none;
-background-color: inherit;
-overflow: hidden;
+body {
+   font-family: 'Dosis', sans-serif;
+  background: white;
 }
 
-.sidebar{
-width : 200px;
-float : left;
+#menu-wrapper {
+background-color : olive;
+    overflow: hidden;
+    max-width: 55px;
+    border:1px solid;
+    cursor: pointer;
+}
+
+#menu-wrapper #hamburger-menu {
+    position: relative;
+    width: 25px;
+    height: 20px;
+    margin: 15px;
+}
+
+#menu-wrapper #hamburger-menu span {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 2px;
+    border-radius: 10px;
+    color: black;
+    background-color: white;
+    position: absolute;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .4s ease-in-out;
+    transition: .4s ease-in-out;
+}
+
+#menu-wrapper #hamburger-menu span:nth-child(1) {
+    top: 0;
+}
+#menu-wrapper #hamburger-menu span:nth-child(2) {
+    top: 9px;
+}
+#menu-wrapper #hamburger-menu span:nth-child(3) {
+    top: 18px;
+}
+#menu-wrapper #hamburger-menu.open span:nth-child(1) {
+    top: 9px;
+    -webkit-transform: rotate(135deg);
+    transform: rotate(135deg);
+}
+#menu-wrapper #hamburger-menu.open span:nth-child(2) {
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    left: -60px;
+}
+#menu-wrapper #hamburger-menu.open span:nth-child(3) {
+    top: 9px;
+    -webkit-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+}
+
+#menu-container .menu-list .menu-submenu {
+    padding:0;
+}
+#menu-container .menu-list .menu-submenu li a {
+    display:block;
+    padding:10px 0 10px 20px;
+
+}
+#menu-container .menu-list .menu-submenu li a:hover {
+    background:#eee;
+}
+#menu-container .menu-list {
+    padding-left: 0;
+    display: block;
+    position: absolute;
+    width: 100%;
+    max-width: 200px;
+    background: white;
+    box-shadow: rgba(100,100,100,0.2) 6px 2px 10px;
+    z-index: 999;
+    overflow-y: auto;
+    overflow-x: hidden;
+    left: -100%;
+}
+
+#menu-container .menu-list li.accordion-toggle, #menu-container .menu-list .menu-login {
+    font-size: 16px;
+    padding: 20px;
+    text-transform: uppercase;
+    border-top: 1px solid #dbdcd2;
+}
+#menu-container .menu-list li:first-of-type {
+    border-top: 0;
+}
+
+.accordion-toggle, .accordion-content {
+    cursor: pointer;
+    font-size: 16px;
+    position: relative;
+    letter-spacing: 1px;
+}
+
+  .accordion-content {
+    display: none;
+}
+
+.accordion-toggle a:before, .accordion-toggle a:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    width: 15px;
+    height: 2px;
+    margin-top: -1px;
+    background-color: #5a5858;
+    -webkit-transform-origin: 50% 50%;
+    -ms-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s ease-out;
+}
+
+.accordion-toggle a:before {
+    -webkit-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    opacity: 1;
+    z-index: 2;
+}
+
+.accordion-toggle.active-tab {
+  background: #dae0e5;
+  transition: all 0.3s ease;
+}
+.accordion-toggle a.active:before {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+    background: #fff !important;
+}
+
+.accordion-toggle a.active:after {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    transform: rotate(180deg);
+    background: #fff !important;
+    opacity: 0;
 }
 </style>
 </head>
 <body>
-			<nav id="sidebarMenu" class="sidebar">
+ <div id="menu-container">
+            <div id="menu-wrapper">
+                <div id="hamburger-menu"><span></span><span></span><span></span></div>
+                <!-- hamburger-menu -->
+            </div>
+            <!-- menu-wrapper -->
+            <ul class="menu-list accordion">
+                <li id="nav1" class="toggle accordion-toggle"> 
+                    <span class="icon-plus"></span>
+                    <a class="menu-link" href="#">고정카테고리1</a>
+                </li>
+               		 <ul id="cat-menu" class="menu-submenu accordion-content">
+               		 </ul> 
+            </ul>
+            <!-- menu-list accordion-->
+        </div>
 
-					<button class="accordion">영/유아(0세~7세)</button>
-					<div class="panel">
-					<a href="like/item">모빌</a><br>
-					<a href="like/item">딸랑이</a><br>
-					<a href="like/item">오뚝이</a><br>
-					<a href="like/item">아기체육관</a><br>
-					</div>
-					<button class="accordion">아동(8세~11세)</button>
-					<div class="panel">
-					<a href="like/item">역할놀이</a><br>
-					<a href="like/item">작동완구</a><br>
-					<a href="like/item">주방놀이</a><br>
-					<a href="like/item">장난감</a><br>
-					</div>
-					<button class="accordion">인형</button>
-					<div class="panel">
-					<a href="like/item">미미월드</a><br>
-					<a href="like/item">시크릿쥬쥬</a><br>
-					<a href="like/item">콩순이</a><br>
-					</div>
-
-					<c:if test="${not empty managerLogin}">
-						<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-							<span>Manager</span> <a
-								class="d-flex align-items-center text-muted" href="#"
-								aria-label="Add a new report"> <span
-								data-feather="plus-circle"></span>
-							</a>
-						</h6>
-						<ul class="nav flex-column mb-2">
-
-							<li class="nav-item"><a class="nav-link text-muted"
-								href="/category/list/"> <span data-feather="file-text"></span>
-									카테고리
-							</a></li>
-							<li class="nav-item"><a class="nav-link text-muted"
-								href="/item/listofall/"> <span data-feather="file-text"></span>
-									아이템
-							</a></li>
-							<li class="nav-item"><a class="nav-link text-muted"
-								href="/order/detailAll/1"> <span data-feather="file-text"></span>
-									주문 목록
-							</a></li>
-							<li class="nav-item"><a class="nav-link text-muted"
-								href="/Myreplies/listOfAll"> <span data-feather="file-text"></span>
-									리뷰 목록
-							</a></li>
-							<li class="nav-item"><a class="nav-link text-muted"
-								href="/qna/listOfAll"> <span data-feather="file-text"></span>
-									QnA 목록
-							</a></li>
-						</ul>
-					</c:if>
-			</nav>
 	<script type="text/javascript">
+	$(function() {
+        function slideMenu() {
+            var activeState = $("#menu-container .menu-list").hasClass("active");
+            $("#menu-container .menu-list").animate({left: activeState ? "0%" : "-100%"}, 400);
+        }
+        $("#menu-wrapper").click(function(event) {
+            event.stopPropagation();
+            $("#hamburger-menu").toggleClass("open");
+            $("#menu-container .menu-list").toggleClass("active");
+            slideMenu();
+
+            $("body").toggleClass("overflow-hidden");
+        });
+
+        $(".menu-list").find(".accordion-toggle").click(function() {
+            $(this).next().toggleClass("open").slideToggle("fast");
+            $(this).toggleClass("active-tab").find(".menu-link").toggleClass("active");
+
+            $(".menu-list .accordion-content").not($(this).next()).slideUp("fast").removeClass("open");
+            $(".menu-list .accordion-toggle").not(jQuery(this)).removeClass("active-tab").find(".menu-link").removeClass("active");
+        });
+    }); // jQuery load
 		$(document).ready(function() {
 
 			var acc = document.getElementsByClassName("accordion");
@@ -124,7 +241,7 @@ float : left;
 			$.getJSON("/category/categorylist", function(result) {
 				for (var i = 0; i < result.length; i++) {
 					var msg = categorylist(result[i].item_category);
-					$(".category_list").append(msg)
+					$("#cat-menu").append(msg)
 				}
 			});
 		});

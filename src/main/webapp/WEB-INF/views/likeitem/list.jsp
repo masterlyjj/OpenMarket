@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>좋아요 리스트</title>
+<title>내 좋아요 목록</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -27,7 +27,7 @@ float: left;
 
 <body>
 	<jsp:include page="../header.jsp" />
-	<jsp:include page="../sidebar.jsp" />
+	<jsp:include page="../mypage/mSidebar.jsp" />
 <div class="container" style=" font-size : small;">
 <h4>좋아요 리스트</h4>
 	<table class="table">

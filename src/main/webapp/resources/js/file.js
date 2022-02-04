@@ -114,7 +114,7 @@ function getLinkUrl(filename) {
 }
 
 function checkImageFile(filename) {
-	var idx = filename.indexOf("s_");
+	var idx = filename.indexOf('s_');
 	if (idx == 12) {
 		return true;
 	} else {

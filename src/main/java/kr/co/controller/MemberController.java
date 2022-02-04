@@ -1,6 +1,10 @@
 package kr.co.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
+
+import org.apache.ibatis.io.ResolverUtil.IsA;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,8 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.databind.ser.std.FileSerializer;
+
 import kr.co.domain.MemberVO;
+import kr.co.domain.OrdersVO;
+import kr.co.service.FileService;
+import kr.co.service.ItemService;
 import kr.co.service.MemberService;
+import kr.co.service.OrderService;
+import kr.co.service.ReviewService;
 
 @Controller
 @RequestMapping("member")
@@ -17,6 +28,19 @@ public class MemberController {
 
 	@Inject
 	private MemberService mService;
+	
+	@Inject
+	private OrderService oService;
+	
+	@RequestMapping(value = "/mypage/{member_id}", method = RequestMethod.GET)
+	public String mypage(@PathVariable("member_id") String member_id, Model model) {
+		List<OrdersVO> ovo = oService.list(member_id);
+		
+		model.addAttribute("ovo", ovo);
+			
+		return "mypage/mypage";
+	}
+
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout() {
@@ -33,6 +57,12 @@ public class MemberController {
 	@RequestMapping(value = "/loginUI", method = RequestMethod.GET)
 	public String login() {
 		return "member/login";
+	}
+	
+	@RequestMapping(value="/requestResist/{member_id}", method=RequestMethod.GET)
+	public String requestResist(@PathVariable("member_id")String member_id) {
+		mService.requestResist(member_id);
+		return "/cs/cspage";
 	}
 
 	@RequestMapping(value = "/idcheck", method = RequestMethod.POST, produces = "text/html; charset=UTF-8")
@@ -96,11 +126,5 @@ public class MemberController {
 		int result = mService.passChk(vo);
 		return result;
 	}
-
-	@RequestMapping(value = "/mypage/{member_id}", method = RequestMethod.GET)
-	public String mypage(@PathVariable("member_id") String member_id) {
-
-		return "member/mypage";
-	}
-
+	
 }

@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!--   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
   <script src="/resources/js/file.js" type="text/javascript"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 <style type="text/css">
@@ -36,26 +36,18 @@
 	select {
 		width: 200px;
 	}
-	.container {
-		width : 750px;
-		float: left;
-	}
-	.container-fluid {
-		max-width: 750px;
-		float: left;
-	}
-	.item-container {
-		width: 750px;
-	}
+	.container{
+	max-width: 1050px;
+	}	
 </style>
 </head>
 <body>
 	<jsp:include page="../header.jsp" />
 	<jsp:include page="../sidebar.jsp" />
 	
-	<div class="row mb-2 container" style="margin-left: 5%;">
+	<div class="row mb-2 container" style="max-width:1050px; margin-left:18%;">
     <div class="col-md-10">
-      <div class="row g-0 overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative item-container">
+      <div class="row g-0 overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative item-container" style="width:920px;">
         <div class="uploadedList"></div>
         <div class="col p-4 d-flex flex-column position-static">
           <strong class="d-inline-block mb-2 text-primary">${ivo.item_category}</strong>
@@ -243,6 +235,11 @@ var item_price = ${ivo.item_price};
 					alert("로그인시 이용 가능합니다");
 					return;
 				}
+				$.getJSON("/item/getQuantity/"+item_no, function(data){
+		 			console.log(data);
+		 			
+		 		});
+				
 				location.assign("/order/insert/"+member_id+"/"+item_no);
 			});
 		});

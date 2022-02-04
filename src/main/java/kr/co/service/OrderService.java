@@ -23,4 +23,6 @@ public interface OrderService {
 
 	public PageTO<OrdersVO> list(PageTO<OrdersVO> pt, String member_id);
 
+	public PageTO<OrdersVO> sellerCheckOrder(PageTO<OrdersVO> pt, String member_id);
+
 }

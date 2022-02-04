@@ -16,13 +16,21 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<style type="text/css">
+.container {
+max-width: 950px;
+float: left;
+}
+</style>
 </head>
 <body>
-	<jsp:include page="../header.jsp" />
-	<jsp:include page="../sidebar.jsp" />
+	<jsp:include page="../seller/sellerheader.jsp" />
+	<jsp:include page="../seller/sellersidebar.jsp" />
 	<div class="container" style=" font-size : small;">
 	<h4>카테고리 리스트</h4>
+	<c:if test="${managerLogin.manager_code > 0}">
 	<a class="btn btn-outline-primary btn-sm" style="float: right;" href="/category/insert">카테고리 등록</a>
+	</c:if>
 	<table class="table">
 		<thead>
 			<th scope="col">no</th>
@@ -37,8 +45,10 @@
 					<td>${vo.item_category}</td>
 					<td>${vo.item_name}</td>
 					<td>
+					<c:if test="${managerlogin.manager_code >0}">
 						<a class="btn btn-outline-primary btn-sm" href="/category/update/${vo.item_name}">수정</a>
 						<a class="btn btn-outline-primary btn-sm category_delete" href="/category/delete/${vo.item_name}">삭제</a>
+					</c:if>
 					</td>
 				</tr>
 			</c:forEach>

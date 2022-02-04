@@ -17,10 +17,30 @@ public class MemberVO implements Serializable{
 	private String member_phone_number;
 	private String member_regdate;
 	private String member_updatedate;
+	private int member_authcode;
 	
 	public MemberVO() {
 	}
 	
+	public MemberVO(String member_id, String member_pw, String member_name, String member_birthday, String member_email,
+			String member_address, String member_detail_address, String member_phone_number, String member_regdate,
+			String member_updatedate, int member_authcode) {
+		super();
+		this.member_id = member_id;
+		this.member_pw = member_pw;
+		this.member_name = member_name;
+		this.member_birthday = member_birthday;
+		this.member_email = member_email;
+		this.member_address = member_address;
+		this.member_detail_address = member_detail_address;
+		this.member_phone_number = member_phone_number;
+		this.member_regdate = member_regdate;
+		this.member_updatedate = member_updatedate;
+		this.member_authcode = member_authcode;
+	}
+
+
+
 	public MemberVO(String member_id, String member_pw, String member_name, String member_birthday, String member_email,
 			String member_address, String member_detail_address, String member_phone_number) {
 		super();
@@ -50,6 +70,21 @@ public class MemberVO implements Serializable{
 		this.member_updatedate = member_updatedate;
 	}
 
+	public int getMember_authcode() {
+		return member_authcode;
+	}
+
+
+
+	public void setMember_authcode(int member_authcode) {
+		this.member_authcode = member_authcode;
+	}
+
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	
 	public String getMember_id() {
 		return member_id;

@@ -164,41 +164,41 @@ height : 38px;
 
 
     <header class="bg-light d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-      
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 ml-5">
-      <c:choose>
-          <c:when test="${empty login}">
-            <li><a href="/" class="nav-link px-2 link-secondary text-dark">Home</a></li>
-           <li><a href="/member/loginUI" class="nav-link px-2 link-dark text-dark">좋아요
-           <li><a href="/member/loginUI" class="nav-link px-2 link-dark text-dark">장바구니</a></li>
-           <li><a href="/member/loginUI" class="nav-link px-2 link-dark text-dark">주문배송조회</a></li>
-           <li><a href="/member/loginUI" class="nav-link px-2 link-dark text-dark">리뷰 목록</a></li>
-           <li><a href="/member/loginUI" class="nav-link px-2 link-dark text-dark">QnA 목록</a></li>
-          </c:when>
-          
-          <c:when test="${not empty login}">
-            <li><a href="/" class="nav-link px-2 link-secondary text-dark">Home</a></li>
-           <li><a href="/likeitem/list/${login.member_id}" class="nav-link px-2 link-dark text-dark">좋아요
-           <li><a href="/cart/read/${login.member_id}" class="nav-link px-2 link-dark text-dark">장바구니</a></li>
-           <li><a href="/order/detail/${login.member_id}" class="nav-link px-2 link-dark text-dark">주문배송조회</a></li>
-           <li><a href="/Myreplies/list/${login.member_id}" class="nav-link px-2 link-dark text-dark">리뷰 목록</a></li>
-           <li><a href="/qna/listForMember/${login.member_id}" class="nav-link px-2 link-dark text-dark">QnA 목록</a></li>
-          </c:when>
-        </c:choose>
-     
+          <c:choose>
+         	 <c:when test="${not empty login}">
+         	 <c:if test="${login.member_authcode > 0}">
+	           <li><a href="/seller/sellerpage" class="nav-link px-2 link-dark text-dark">판매자 홈</a></li>
+    			</c:if>	
+	           <li><a href="/member/mypage/${login.member_id}" class="nav-link px-2 link-secondary text-dark">마이페이지</a></li>
+	           <li><a href="/likeitem/list/${login.member_id}" class="nav-link px-2 link-dark text-dark">좋아요</a></li>
+	           <li><a href="/cart/read/${login.member_id}" class="nav-link px-2 link-dark text-dark">장바구니</a></li>
+	           <li><a href="/order/detail/${login.member_id}" class="nav-link px-2 link-dark text-dark">주문배송조회</a></li>
+	           <li><a href="/cs/cspage" class="nav-link px-2 link-dark text-dark">고객센터${managerlogin.manager_code}</a></li>
+        	</c:when>
+
+	           <c:when test="${managerLogin.manager_code > 0}">
+	           <li><a href="/manager/" class="nav-link px-2 link-dark text-dark">관리자 홈</a></li>
+	           <li><a href="/order/detailAll" class="nav-link px-2 link-dark text-dark">전체주문목록</a></li>
+	           <li><a href="item/listofall" class="nav-link px-2 link-dark text-dark">전체상품목록</a></li>
+	           <li><a href="/category/list" class="nav-link px-2 link-dark text-dark">카테고리</a></li>
+	           <li><a href="/Myreplies/listOfAll" class="nav-link px-2 link-dark text-dark">전체리뷰</a></li>
+	           <li><a href="/qna/listOfAll" class="nav-link px-2 link-dark text-dark">전체Q&A</a></li>
+	           <li><a href="/cs/cspage" class="nav-link px-2 link-dark text-dark">고객센터</a></li>
+        	</c:when>
+     	</c:choose>
       </ul>
 
       <div class="col-md-3 text-end">
         <c:choose>
-          <c:when test="${empty login}">
+          <c:when test="${empty login && empty managerLogin}">
             <a class="btn btn-outline-primary btn-sm" href="/member/loginUI">로그인</a>
             <a class="btn btn-outline-primary btn-sm" href="/member/insert">회원가입</a>
           </c:when>
           
-          <c:when test="${not empty login}">
-            ${login.member_id} 님, 환영합니다. 
-            <a class="btn btn-outline-primary btn-sm" href="/member/read/${login.member_id}">회원 정보 보기</a> 
+          <c:when test="${not empty login || not empty managerLogin}">
+            환영합니다.
             <a class="btn btn-outline-primary btn-sm" href="/member/logout">로그아웃</a>
           </c:when>
         </c:choose>

@@ -64,4 +64,11 @@ public class MemberDAOImpl implements MemberDAO {
 		return result;
 	}
 
+	@Override
+	public void requestResist(String member_id) {
+		System.out.println(member_id);
+		sqlSession.update(NS + ".requestResist", member_id);
+		
+	}
+
 }

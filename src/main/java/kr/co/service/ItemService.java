@@ -39,4 +39,8 @@ public interface ItemService {
 
 	List<OrdersVO> listForRank();
 
+	PageTO<ItemVO> listBySeller(PageTO<ItemVO> pt, String member_id);
+
+	int getQuantity(int item_no);
+
 }

@@ -44,6 +44,21 @@ public class ItemController {
 
 		model.addAttribute("list", list);
 	}
+	
+
+	@RequestMapping(value = "/getQuantity/{item_no}", method = RequestMethod.GET)
+	public ResponseEntity<Integer> getQuantity(@PathVariable("item_no")int item_no) {
+		ResponseEntity<Integer> entity = null;
+		try {
+			
+			int quantity = iService.getQuantity(item_no);
+			entity = new ResponseEntity<Integer>(quantity, HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<Integer>(HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}
 
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String insert(ItemVO ivo, BoardVO bvo) {
@@ -102,9 +117,7 @@ public class ItemController {
 	@RequestMapping(value = "/addItem", method = RequestMethod.POST)
 	public String addItem(ItemVO vo) {
 		int item_no = vo.getItem_no();
-		System.out.println(item_no);
 		iService.addItem(vo);
-		System.out.println(vo.getItem_no());
 		return "redirect:/item/read/" + vo.getItem_no();
 	}
 
@@ -146,6 +159,64 @@ public class ItemController {
 		model.addAttribute("list", list);
 		model.addAttribute("pt", pt);
 	}
+	
+	@RequestMapping(value = "/listBySeller/{member_id}/{curPage}", method = RequestMethod.GET)
+	public String listBySeller(@PathVariable("member_id")String member_id, @PathVariable("curPage")int curPage, PageTO<ItemVO> pt, Model model) {
+		pt.setCurPage(curPage);
+		pt = iService.listBySeller(pt, member_id);
+		List<ItemVO> list = new ArrayList<ItemVO>();
+		
+		for (int i = 0; i < pt.getList().size(); i++) {
+			int item_no = pt.getList().get(i).getItem_no();
+			String item_name = pt.getList().get(i).getItem_name();
+			String file_name = fService.getFile(item_no).get(0);
+			list.add(new ItemVO(item_no, item_name, file_name));
+		}
+		model.addAttribute("list", list);
+		model.addAttribute("pt", pt);
+		return "/seller/listBySeller";
+	}
+	@RequestMapping(value = "/listBySeller/{member_id}", method = RequestMethod.GET)
+	public String listBySeller(@PathVariable("member_id")String member_id, PageTO<ItemVO> pt, Model model) {
+		pt.setCurPage(1);
+		pt = iService.listBySeller(pt, member_id);
+		List<ItemVO> list = new ArrayList<ItemVO>();
+		
+		for (int i = 0; i < pt.getList().size(); i++) {
+			int item_no = pt.getList().get(i).getItem_no();
+			String item_name = pt.getList().get(i).getItem_name();
+			String file_name = fService.getFile(item_no).get(0);
+			list.add(new ItemVO(item_no, item_name, file_name));
+		}
+		model.addAttribute("list", list);
+		model.addAttribute("pt", pt);
+		return "/seller/listBySeller";
+	}
+	
+	@RequestMapping(value = "/listBySeller2/{member_id}", method = RequestMethod.GET)
+	public ResponseEntity<PageTO<ItemVO>> listBySeller(@PathVariable("member_id")String seller_id, PageTO<ItemVO> pt) {
+		ResponseEntity<PageTO<ItemVO>> entity =null;
+		pt.setCurPage(1);
+		try {
+			pt = iService.listBySeller(pt, seller_id);
+			List<ItemVO> list = new ArrayList<ItemVO>();
+			
+			for (int i = 0; i < pt.getList().size(); i++) {
+				int item_no = pt.getList().get(i).getItem_no();
+				String item_name = pt.getList().get(i).getItem_name();
+				String file_name = fService.getFile(item_no).get(0);
+				list.add(new ItemVO(item_no, item_name, file_name));
+			}
+			pt.setList(list);
+			entity = new ResponseEntity<PageTO<ItemVO>>(pt,HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<PageTO<ItemVO>>(HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}
+	
+	
 
 	@RequestMapping(value = "/list/{item_category}/1", method = RequestMethod.GET)
 	public String listbycategory(@PathVariable("item_category") String item_category, PageTO<ItemVO> pt, Model model) {

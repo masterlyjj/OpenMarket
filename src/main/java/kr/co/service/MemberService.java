@@ -22,4 +22,6 @@ public interface MemberService {
 
 	public int passChk(MemberVO vo);
 
+	public void requestResist(String member_id);
+
 }

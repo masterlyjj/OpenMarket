@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>My Review</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -30,7 +30,7 @@ float: left;
 <body>
 
 	<jsp:include page="../header.jsp" />
-	<jsp:include page="../sidebar.jsp" />
+	<jsp:include page="mSidebar.jsp" />
 <div class="container" style=" font-size : small;">
 <h4>리뷰 목록</h4>
 	<table class="table">
@@ -105,7 +105,7 @@ float: left;
 	</div>
 	
 	<div style="margin-left: 40%">
-	<jsp:include page="page.jsp" />
+	<jsp:include page="../review/page.jsp" />
 	</div>
 </div>
 	<jsp:include page="../footer.jsp" />

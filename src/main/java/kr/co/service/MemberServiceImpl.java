@@ -68,4 +68,10 @@ public class MemberServiceImpl implements MemberService {
 		return result;
 	}
 
+	@Override
+	public void requestResist(String member_id) {
+		mDao.requestResist(member_id);
+		
+	}
+
 }

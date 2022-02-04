@@ -28,7 +28,7 @@ public class MyReviewController {
 
 		model.addAttribute("pt", pt);
 
-		return "review/Mylist";
+		return "mypage/Mylist";
 	}
 
 	@RequestMapping(value = "/list/{member_id}/{curPage}", method = RequestMethod.GET)
@@ -41,7 +41,7 @@ public class MyReviewController {
 
 		model.addAttribute("pt", pt);
 
-		return "review/Mylist";
+		return "mypage/Mylist";
 	}
 
 	@RequestMapping(value = "/listOfAll", method = RequestMethod.GET)

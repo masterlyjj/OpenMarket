@@ -1,6 +1,7 @@
 package kr.co.repository;
 
 import java.util.List;
+import java.util.Map;
 
 import kr.co.domain.ItemVO;
 import kr.co.domain.OrdersVO;
@@ -51,6 +52,12 @@ public interface ItemDAO {
 
 	List<OrdersVO> listForRank();
 
-	void updateQuantity(int item_no);
+	void updateQuantity(Map<String, Object> map);
+
+	List<ItemVO> listBySeller(PageTO<ItemVO> pt, String seller_id);
+
+	int getAmountBySeller(String seller_id);
+
+	int getQuantity(int item_no);
 
 }

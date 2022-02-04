@@ -24,8 +24,8 @@ float: left;
 </style>
 </head>
 <body>
-	<jsp:include page="../header.jsp" />
-	<jsp:include page="../sidebar.jsp" />
+	<jsp:include page="../seller/sellerheader.jsp" />
+	<jsp:include page="../seller/sellersidebar.jsp" />
 	<div class="container" style="font-size: small;">
 		<h4>QnA 목록</h4>
 		<table class="table">

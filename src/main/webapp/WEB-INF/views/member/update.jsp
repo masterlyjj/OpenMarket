@@ -37,6 +37,10 @@
 #backhome {
 	margin-top: 10px;
 }
+.input-group-text{
+width: 80px;
+justify-content: center;
+}
 </style>
 
 <body>

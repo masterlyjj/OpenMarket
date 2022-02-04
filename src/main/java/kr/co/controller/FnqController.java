@@ -2,6 +2,8 @@ package kr.co.controller;
 
 import javax.inject.Inject;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -81,14 +83,18 @@ public class FnqController {
 	}
 
 	@RequestMapping(value = "/list/{curPage}", method = RequestMethod.GET)
-	public String list(@PathVariable("curPage") int curPage, PageTO<FnqVO> pt, Model model) {
+	public ResponseEntity<PageTO<FnqVO>> list(@PathVariable("curPage") int curPage, PageTO<FnqVO> pt, Model model) {
+		ResponseEntity<PageTO<FnqVO>> entity = null;
+		
 		pt.setCurPage(curPage);
-
-		pt = fService.list(pt);
-
-		model.addAttribute("pt", pt);
-
-		return "fnq/list";
+		try {
+			pt = fService.list(pt);
+			entity = new ResponseEntity<PageTO<FnqVO>>(pt,HttpStatus.OK);
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<PageTO<FnqVO>>(HttpStatus.BAD_REQUEST);
+		}
+		return entity;
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)

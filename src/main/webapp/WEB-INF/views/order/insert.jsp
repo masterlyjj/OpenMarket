@@ -393,6 +393,7 @@ span.input-group-text{
 			         alert(msg);
 			     }
 			  });
+	        $("form").submit();
 		});
 
 		$("button#cancel").click(function() {

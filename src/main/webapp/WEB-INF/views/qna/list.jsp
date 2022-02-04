@@ -58,17 +58,17 @@ word-break: break-all;
 }
 .pagingline {
 margin-top: 10px;
-width : 720px;
+width : 920px;
 }
 
 .container {
-max-width: 750px;
+max-width: 920px;
 float: left;
 }
 </style>
 <body>
 	<div id="div2" class="table-responsive" style="margin: 50px 0px 20px 20px;">
-		<h3>QnA</h3>
+		<h3>Q&A</h3>
 	</div>
 <form>
 <input id="input_board_no" type="hidden" value="${vo.board_no}">

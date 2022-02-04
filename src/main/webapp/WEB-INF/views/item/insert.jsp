@@ -28,9 +28,8 @@
 </style>
 <body>
 
-	<jsp:include page="../header.jsp" />
-
-	<jsp:include page="../sidebar.jsp" />
+	<jsp:include page="../seller/sellerheader.jsp" />
+	<jsp:include page="../seller/sellersidebar.jsp" />
 
 	<div class="row mb-2 container">
 		<div class="col-md-10">
@@ -39,6 +38,10 @@
 					<div class="col p-4 d-flex flex-column position-static">
 						<p class="card-text mb-auto">
 						<form action="/item/insert" method="post">
+							<div class="input-group mb-2"> 
+								<span class="input-group-text">seller</span>
+								<input name="member_id" class="form-control" value="${login.member_id}" readonly>
+							</div>
 							<div class="input-group mb-2"> 
 								<span class="input-group-text">title</span>
 								<input name="board_title" class="form-control">
