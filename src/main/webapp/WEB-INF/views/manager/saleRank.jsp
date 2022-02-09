@@ -39,7 +39,6 @@
 <script>
 	var date = new Date();
 	var saleRank1 = ${saleRank1};
-	console.log(saleRank1);
 	
 </script>
 

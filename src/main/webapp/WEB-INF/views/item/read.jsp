@@ -75,6 +75,10 @@
 					<option>선택하세요</option>
 				</select><br>
 				</li>
+				<li>
+					<p class="product_article_tit">재고</p>
+					<p class="product_article_contents amount"></p>
+				</li>
 				<br>
 				<div class="row">
 					<div style="margin-left: 10px;">
@@ -116,6 +120,7 @@ var item_price = ${ivo.item_price};
  			});
  		}
  		
+ 		
  		$.getJSON("/file/getFile/"+item_no, function(data) {
 			/* for(var i=0; i<data.length; i++){ */
 				var item = uploadedItemForRead(data[0]);
@@ -137,6 +142,24 @@ var item_price = ${ivo.item_price};
 				$("#item_color").append(msg);
 			}
 		});
+		
+		$("#item_color").on("change",function(){
+			var item_size = $("#item_size option:selected").val();
+			var item_color = $("#item_color option:selected").val();
+			$.getJSON("/item/getItme_no/"+item_name+"/"+item_size+"/"+item_color, function(item_no) {
+				$.getJSON("/item/getQuantity/"+item_no, function(data){
+					for(var i = 0; i < data.length;i++){
+					var arr = data[i];	
+					if(arr.item_amount <0){
+						$(".amount").text("품절 되었습니다.");
+					}else{
+						$(".amount").text(arr.item_amount+"개");
+					}
+					}
+		 		});
+			});
+		});
+				
 		
 		
 		
@@ -236,7 +259,6 @@ var item_price = ${ivo.item_price};
 					return;
 				}
 				$.getJSON("/item/getQuantity/"+item_no, function(data){
-		 			console.log(data);
 		 			
 		 		});
 				

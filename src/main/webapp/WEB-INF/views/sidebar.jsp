@@ -115,6 +115,11 @@ background-color : olive;
     left: -100%;
 }
 
+#menu-container{
+	width : 100px;
+	float : left;
+}
+
 #menu-container .menu-list li.accordion-toggle, #menu-container .menu-list .menu-login {
     font-size: 16px;
     padding: 20px;

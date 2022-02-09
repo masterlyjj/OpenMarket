@@ -41,6 +41,6 @@ public interface ItemService {
 
 	PageTO<ItemVO> listBySeller(PageTO<ItemVO> pt, String member_id);
 
-	int getQuantity(int item_no);
+	List<ItemVO> getQuantity(int item_no);
 
 }

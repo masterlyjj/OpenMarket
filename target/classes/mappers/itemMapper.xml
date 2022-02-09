@@ -115,8 +115,8 @@
 		UPDATE item SET item_amount=item_amount-#{ea} WHERE item_no = #{item_no}
 	</update>
 	
-	<select id="getQuantity" resultType="Integer">
-		SELECT item_amount FROM item WHERE item_no = #{item_no}
+	<select id="getQuantity" resultType="kr.co.domain.ItemVO">
+		SELECT * FROM item WHERE item_no = #{item_no}
 	</select>
 	
 </mapper>

@@ -58,6 +58,6 @@ public interface ItemDAO {
 
 	int getAmountBySeller(String seller_id);
 
-	int getQuantity(int item_no);
+	List<ItemVO> getQuantity(int item_no);
 
 }

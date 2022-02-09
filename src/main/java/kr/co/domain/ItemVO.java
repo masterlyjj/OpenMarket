@@ -259,8 +259,7 @@ public class ItemVO implements Serializable{
 
 	@Override
 	public String toString() {
-		return "{'item_no':" + item_no + ", 'member_id':'" + member_id + "', 'item_name':'" + item_name + "', 'file_name':'"
-				+ file_name + "'}";
+		return "{'item_no':" + item_no + ", 'member_id':'" + member_id + "', 'item_name':'" + item_name + "', 'file_name':'" + file_name + "', 'item_amount':'" + item_amount + "'}";
 	}
 
 

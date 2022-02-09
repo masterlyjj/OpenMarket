@@ -132,8 +132,6 @@ public class QnaServiceImpl implements QnaService {
 	@Override
 	public void delete(int qna_no) {
 		
-		System.out.println(qna_no);
-		
 		qDao.delete(qna_no);
 
 	}

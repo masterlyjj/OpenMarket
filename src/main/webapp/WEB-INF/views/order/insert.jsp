@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>주문 하기</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -373,7 +373,6 @@ span.input-group-text{
 			     buyer_addr : order_address +" "+ order_detail_address,
 			     buyer_postcode : order_detail_address 
 			  }, function(rsp) {
-			     console.log(rsp);
 			     if (rsp.success) {
 			        var msg = '결제가 완료되었습니다.';
 			        msg += '고유ID : ' + rsp.imp_uid;
@@ -393,7 +392,6 @@ span.input-group-text{
 			         alert(msg);
 			     }
 			  });
-	        $("form").submit();
 		});
 
 		$("button#cancel").click(function() {

@@ -42,8 +42,6 @@
 	var likeRank1 = ${likeRank1};
 	var getName1 = ${getName1};
 
-	console.log(likeRank1);
-	console.log(getName1);
 </script>
 
 
