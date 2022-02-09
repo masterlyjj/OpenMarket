@@ -127,7 +127,7 @@ height : 38px;
 
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="div1">
-  <span class="navbar-brand mb-0 h1"><a class="nav-link text-light" href="/">중장비마켓</a></span>
+  <span class="navbar-brand mb-0 h1"><a class="nav-link text-light" href="/">OPEN</a></span>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -167,6 +167,15 @@ height : 38px;
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 ml-5">
           <c:choose>
+          	 <c:when test="${empty login && empty managerLogin}">
+	            <li><a href="/" class="nav-link px-2 link-secondary text-dark">Home</a></li>
+	           <li><a href="/member/loginUI" class="nav-link px-2 link-dark text-dark">좋아요</a></li>
+	           <li><a href="/member/loginUI" class="nav-link px-2 link-dark text-dark">장바구니</a></li>
+	           <li><a href="/member/loginUI" class="nav-link px-2 link-dark text-dark">주문배송조회</a></li>
+	           <li><a href="/member/loginUI" class="nav-link px-2 link-dark text-dark">리뷰 목록</a></li>
+	           <li><a href="/member/loginUI" class="nav-link px-2 link-dark text-dark">QnA 목록</a></li>
+         	 </c:when>
+         	 
          	 <c:when test="${not empty login}">
          	 <c:if test="${login.member_authcode > 0}">
 	           <li><a href="/seller/sellerpage" class="nav-link px-2 link-dark text-dark">판매자 홈</a></li>
@@ -181,7 +190,7 @@ height : 38px;
 	           <c:when test="${managerLogin.manager_code > 0}">
 	           <li><a href="/manager/" class="nav-link px-2 link-dark text-dark">관리자 홈</a></li>
 	           <li><a href="/order/detailAll" class="nav-link px-2 link-dark text-dark">전체주문목록</a></li>
-	           <li><a href="item/listofall" class="nav-link px-2 link-dark text-dark">전체상품목록</a></li>
+	           <li><a href="/item/listofall" class="nav-link px-2 link-dark text-dark">전체상품목록</a></li>
 	           <li><a href="/category/list" class="nav-link px-2 link-dark text-dark">카테고리</a></li>
 	           <li><a href="/Myreplies/listOfAll" class="nav-link px-2 link-dark text-dark">전체리뷰</a></li>
 	           <li><a href="/qna/listOfAll" class="nav-link px-2 link-dark text-dark">전체Q&A</a></li>
@@ -198,7 +207,8 @@ height : 38px;
           </c:when>
           
           <c:when test="${not empty login || not empty managerLogin}">
-            환영합니다.
+            <c:if test="${not empty login}">${login.member_id}님, 환영합니다.</c:if>
+            <c:if test="${not empty managerLogin}">${managerLogin.manager_id}님, 환영합니다.</c:if>
             <a class="btn btn-outline-primary btn-sm" href="/member/logout">로그아웃</a>
           </c:when>
         </c:choose>

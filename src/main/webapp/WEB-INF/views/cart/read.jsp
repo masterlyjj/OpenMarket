@@ -48,7 +48,7 @@ float: left;
 							<th scope="col">상품 이미지</th>
 							<th scope="col"><span>상품명</span></th>
 							<th scope="col">할인가(판매가)</th>
-							<th scope="col">수량</th>
+							<th scope="col">수량/재고</th>
 							<th scope="col">합계</th>
 							<th scope="col">선택</th>
 						</tr>
@@ -63,13 +63,12 @@ float: left;
 										data-item_name="${cart.item_name}"
 										data-file_name="${cart.file_name}"
 										class="uploadedList${i.index}"></div></td>
-								<td><a style="text-decoration: none; color: #000;"
-									href="/item/read/${cart.item_no}">${cart.item_name}</a></td>
+								<td><a style="text-decoration: none; color: #000;" href="/item/read/${cart.item_no}">${cart.item_name}</a></td>
 								<td><span class="dprice">${(100-cart.discount_percentage)*cart.item_price/100}</span>(${cart.item_price})
 									원</td>
-								<td><input name="cart_quantity" type="number"
-									data-itemno="${cart.item_no}" min="1" max="99" step="1"
-									value="${cart.cart_quantity}"><br></td>
+								<td><input class="ino${i.index}" style="width:30px;" name="cart_quantity" type="number"
+									data-itemno="${cart.item_no}" data-ea="" min="1" max="99" step="1"
+									value="${cart.cart_quantity}"></td>
 								<td><span class="isum">${((100-cart.discount_percentage)*cart.item_price/100)*cart.cart_quantity}</span></td>
 								<td><button data-citem_no="${cart.cart_no}"
 										class="btn btn-outline-info btn-sm del">삭제</button> <br></td>
@@ -95,6 +94,9 @@ float: left;
 	<jsp:include page="../footer.jsp" />
 
 	<script type="text/javascript">
+	$(document).ready(function(){
+		
+	
 		var vo = "${map.list}";
 		vo = eval(vo);
 		for (var i = 0; i < vo.length; i++) {
@@ -103,13 +105,28 @@ float: left;
 			var file_name = $(div_class).attr("data-file_name");
 			var item = uploadedItemlist(file_name, item_no);
 			$(div_class).append(item);
-		};
+			
+			$.getJSON("/item/getQuantity/"+item_no, function(data){
+				for(var j = 0; j < data.length;j++){
+				var arr =data[j];
+				$("input[data-itemno='"+arr.item_no+"']").attr("data-ea",arr.item_amount);
+				$("input[data-itemno='"+arr.item_no+"']").attr("data-item_no",arr.item_no);
+			var item_no = $("input[data-itemno='"+arr.item_no+"']").attr("data-item_no");
+			var item_ea = $("input[data-itemno='"+arr.item_no+"']").attr("data-ea");
+			
+			if(item_ea <0){
+				$("input[data-ea='"+item_ea+"']").unwrap().wrap("<td><p class='status-quantity'>품절</p></td>");
+				$("input[data-ea='"+item_ea+"']").remove();
+			}
+				}
+			});
+		}
+		
 
-		var item_no = $(this).attr("data-item_no");
 		var map = "${map}";
 		var list = "${map.list}";
 		var member_id = "${member_id}";
-
+		
 		var money = "${map.sumMoney}";
 		var sumMoney = eval(money);
 		$(".totalprice").append(sumMoney);
@@ -118,21 +135,24 @@ float: left;
 		var iarr = eval(ilist);
 
 		var sum = 0;
+		
 
 		$("#totalprice").text(sum);
+		
 
-		$("input[name='cart_quantity']").on(
-				"input",
-				function(event) {
+		$("input[name='cart_quantity']").on("input", function(event) {
 					var qtag = $(this);
 					var update_quantity = $(this).val();
-					if (update_quantity > 99) {
-						alert("제품은 한번에 99개까지 선택할 수 있습니다.");
-						qtag.val(99);
-						update_quantity = 99;
-					}
 					var totalprice = $(this).val();
 					var item_no = $(this).attr("data-itemno");
+					$.getJSON("/item/getQuantity/"+item_no, function(data){
+						var item_ea = $("input[data-itemno='"+item_no+"']").attr("data-ea");
+							if (update_quantity > item_ea) {
+								alert("재고수량을 초과했습니다.");
+								qtag.val(item_ea);
+								update_quantity = item_ea;
+							}
+					})
 					$.ajax({
 						type : "post",
 						url : "/cart/updateQuantity",
@@ -174,7 +194,6 @@ float: left;
 					var sum = 0;
 					for (var i = 0; i < arr.length; i++) {
 						sum = sum + eval($(arr[i]).text());
-						console.log(sum);
 					}
 					$(".totalprice").text(sum);
 					window.location.reload();
@@ -184,6 +203,11 @@ float: left;
 
 		$(".order").click(function(event) {
 			event.preventDefault();
+			var status = $(".status-quantity").text();
+			if(status=='품절'){
+				alert("품절 된 상품이 있습니다.");
+				return;
+			}
 			if (money == 0) {
 				alert("장바구니가 비었습니다.");
 			} else {
@@ -191,6 +215,7 @@ float: left;
 			}
 
 		});
+	});
 	</script>
 
 </body>

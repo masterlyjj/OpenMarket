@@ -33,6 +33,7 @@
 					<th scope="col">회원 핸드폰 번호</th>
 					<th scope="col">회원 주소</th>
 					<th scope="col">회원 세부 주소</th>
+					<th scope="col">판매자 등록 여부</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -49,6 +50,12 @@
 						<td>${vo.member_phone_number}</td>
 						<td>${vo.member_address }</td>
 						<td>${vo.member_detail_address }</td>
+						<td>
+						<c:choose>
+						<c:when test="${vo.member_authcode ==0}">미등록회원</c:when>
+						<c:when test="${vo.member_authcode ==1}">등록회원</c:when>
+						</c:choose>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>

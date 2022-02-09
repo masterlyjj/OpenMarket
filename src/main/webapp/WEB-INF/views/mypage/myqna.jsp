@@ -76,7 +76,6 @@ $(document).ready(function(){
 		var item_name = $(div_class).attr("data-item_name");
 		var file_name = $(div_class).attr("data-file_name");
 		var item = uploadedItemlist(file_name,item_no);
-		console.log(item);
 		$(div_class).append(item);
 	}
 });

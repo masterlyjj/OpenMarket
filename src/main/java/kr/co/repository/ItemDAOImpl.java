@@ -199,8 +199,8 @@ public class ItemDAOImpl implements ItemDAO {
 	}
 
 	@Override
-	public int getQuantity(int item_no) {
-		return sqlSession.selectOne (NS + ".getQuantity", item_no);
+	public List<ItemVO> getQuantity(int item_no) {
+		return sqlSession.selectList (NS + ".getQuantity", item_no);
 		
 	}
 

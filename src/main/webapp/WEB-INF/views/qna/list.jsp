@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Q&A 목록</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -169,7 +169,6 @@ float: left;
 	               $(".area-answer").css("display", "inline-flex");
 	               if(val != 'null'){
 	               $(".btn_answer").eq(clkIdx).text("답변수정");
-	               console.log(val);
 	               }else{
 	                  
 	               }

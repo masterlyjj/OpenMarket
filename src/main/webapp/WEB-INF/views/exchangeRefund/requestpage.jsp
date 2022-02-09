@@ -15,9 +15,7 @@
 <style type="text/css">
 
 .refundpage{
-    width: 1250px;
-    padding: 0;
-    float: right;
+    width: 1040px;
 }
 
 .h-detail{
@@ -57,13 +55,15 @@ dd {
 }
 
 .refundpage{
-    padding: 0;
-    float: right;
+    width: 1050px;
+    margin-left: 18%;
+    display: inline-block;
 }
 
 .wrap-ordered-detail {
     overflow: hidden;
     position: relative;
+    height : 350px;
 }
 
 .sec-oredered-detail{

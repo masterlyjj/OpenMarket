@@ -47,15 +47,15 @@ public class ItemController {
 	
 
 	@RequestMapping(value = "/getQuantity/{item_no}", method = RequestMethod.GET)
-	public ResponseEntity<Integer> getQuantity(@PathVariable("item_no")int item_no) {
-		ResponseEntity<Integer> entity = null;
+	public ResponseEntity<List<ItemVO>> getQuantity(@PathVariable("item_no")int item_no) {
+		ResponseEntity<List<ItemVO>> entity = null;
 		try {
 			
-			int quantity = iService.getQuantity(item_no);
-			entity = new ResponseEntity<Integer>(quantity, HttpStatus.OK);
+			List<ItemVO> quantity = iService.getQuantity(item_no);
+			entity = new ResponseEntity<List<ItemVO>>(quantity, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			entity = new ResponseEntity<Integer>(HttpStatus.BAD_REQUEST);
+			entity = new ResponseEntity<List<ItemVO>>(HttpStatus.BAD_REQUEST);
 		}
 		return entity;
 	}

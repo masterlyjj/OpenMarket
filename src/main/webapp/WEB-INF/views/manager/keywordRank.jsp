@@ -42,8 +42,6 @@
 	var getName1 = ${getName1};
 	var keywordRank1 = ${keywordRank1};
 
-	console.log(getName1);
-	console.log(keywordRank1);
 </script>
 
 

@@ -126,7 +126,6 @@ public class QnaController {
 
 	@RequestMapping(value = "/delete/{qna_no}", method = RequestMethod.GET)
 	public String delete(@PathVariable("qna_no") int qna_no) {
-		System.out.println(qna_no);
 		qService.delete(qna_no);
 
 		return "redirect:/qna/listOfAll/";

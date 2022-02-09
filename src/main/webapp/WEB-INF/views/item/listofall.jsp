@@ -45,7 +45,10 @@
 					<td>${vo.item_color}</td>
 					<td>${vo.item_price}</td>
 					<td>${vo.discount_percentage}</td>
-					<td>${vo.item_amount}</td>
+					<td>
+					<c:if test="${vo.item_amount < 0}"> 품절</c:if>
+					<c:if test="${vo.item_amount > 0}">${vo.item_amount}</c:if>
+					</td>
 					<td>${vo.item_regdate}</td>
 					<td>
 						<a class="btn btn-outline-primary btn-sm" href="/item/addItem/${vo.item_no}">추가</a>

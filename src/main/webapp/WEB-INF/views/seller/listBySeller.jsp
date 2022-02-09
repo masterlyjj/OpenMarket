@@ -30,7 +30,6 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	var vo = "${list}";
-	console.log(vo)
 	vo = eval(vo);
 	for (var i=0; i<vo.length; i++){
 		var item_no = vo[i].item_no;

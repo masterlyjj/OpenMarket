@@ -126,19 +126,15 @@ $(document).ready(function(){
 	
 	$(".btn_review_updateui_form").click(function() {
 		var review_no = $(this).attr("data-review_no");
-		console.log(review_no);
 		$("#sp_reviewui_review_no").text(review_no);
 
 		var member_id = $(this).attr("data-member_id");
-		console.log(member_id);
 		$("#sp_reviewui_member_id").text(member_id);
 
 		var review_grade = $(this).attr("data-review_grade");
-		console.log(review_grade);
 		$("#div_reviewui_review_grade").val(review_grade);
 
 		var review_content = $(this).attr("data-review_content");
-		console.log(review_content);
 		$("#div_reviewui_review_content").val(review_content);
 
 	});
@@ -147,9 +143,6 @@ $(document).ready(function(){
 		var review_no = $("#sp_reviewui_review_no").text();
 		var review_grade = $("#div_reviewui_review_grade").val();
 		var review_content = $("#div_reviewui_review_content").val();
-
-		console.log(review_grade);
-		console.log(review_content);
 
 		$.ajax({
 			type : "put",
