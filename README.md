@@ -15,8 +15,7 @@
 spring framework를 이용한 오픈마켓 쇼핑몰입니다. 상품을 보며 좋아요를 클릭해 따로 볼 수 있으며, 장바구니에 물건을 넣고 바로 구매를 할 수 있는 웹페이지 입니다.
 또한 구매자가 판매자 등록을 하면 판매활동도 할 수 있도록 구현해놓은 오픈마켓 쇼핑몰입니다.
 ## 3. 기술
-
-
+![152901116-233b5700-9ab9-410e-ab8a-4f978d08a393](https://user-images.githubusercontent.com/96754807/153322061-f5395f89-bc03-4e3b-8ff0-42c0f2ba7776.png)
 ## 4. ERD
  ![ERD](https://user-images.githubusercontent.com/96754807/153321912-20fc51ae-5ad5-4b03-9916-e67a808b7e2c.PNG)
 ## 5. 기능
