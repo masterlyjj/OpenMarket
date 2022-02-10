@@ -18,7 +18,5 @@ spring framework를 이용한 오픈마켓 쇼핑몰입니다. 상품을 보며 
 
 
 ## 4. ERD
- 
- 
- 
+ ![ERD](https://user-images.githubusercontent.com/96754807/153321912-20fc51ae-5ad5-4b03-9916-e67a808b7e2c.PNG)
 ## 5. 기능
