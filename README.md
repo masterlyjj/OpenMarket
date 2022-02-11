@@ -19,14 +19,34 @@ spring framework를 이용한 오픈마켓 쇼핑몰입니다. 상품을 보며 
 ## 4. ERD
  ![ERD](https://user-images.githubusercontent.com/96754807/153321912-20fc51ae-5ad5-4b03-9916-e67a808b7e2c.PNG)
 ## 5. 기능
- ### 1. 일반회원 판매자 기능
+
+### 1. 일반회원의 판매자 등록기능
+
+#### 고객센터 뷰에서 판매자 등록 버튼
+![a1](https://user-images.githubusercontent.com/96754807/153533420-7de4cb74-dbba-4f08-ba4a-87f742c8da5d.png)
+
+#### 이미 판매자 등록이 되어있는 경우
+![a2](https://user-images.githubusercontent.com/96754807/153533451-afbddea7-d3d0-4592-b2b3-bcb0147558d0.png)
+
+#### 판매자 등록이 되어있지 않는 경우
+![a3](https://user-images.githubusercontent.com/96754807/153533540-0fb67994-fc38-4867-939b-38d7bcb971a7.png)
+
+#### 등록을 취소했을 경우
+![a4](https://user-images.githubusercontent.com/96754807/153533561-e90c2b1a-9d56-429f-82df-da539018c268.png)
+
+#### 등록을 신청 했을 경우 (재 로그인요청) 
+![a5](https://user-images.githubusercontent.com/96754807/153533588-8da36f44-9dff-4f87-bf0a-7d5c18dd17f8.png)
+
+
+
+ ### 2. 판매자 기능
 #### 기본 홈에서 판매자 홈으로 이동 할 수 있게 다른 뷰를 구현. 
 ![bb](https://user-images.githubusercontent.com/96754807/153532243-15bb28b9-9538-4af3-8020-75e6f7906975.png)
 
 #### 판매자 홈에서 판매에 관련된 기능을 사용 할 수 있도록 구현.
 ![cc](https://user-images.githubusercontent.com/96754807/153532245-b41f02db-81f7-41bd-a543-d12acf5c5930.png)
 
-#### 일반회원도 판매자 기능을 부여받으면 마켓에 상품등록을 할 수 있는 기능.
+#### 마켓에 상품등록을 할 수 있는 기능.
 ![ee](https://user-images.githubusercontent.com/96754807/153532255-0a64c5e7-34dd-4385-b604-12cc9f44fd11.png)
 
 #### 내가 등록한 상품이 주문된 상태를 확인 / 주문상태를 변경 가능.
@@ -35,13 +55,17 @@ spring framework를 이용한 오픈마켓 쇼핑몰입니다. 상품을 보며 
 #### 내가 등록한 상품을 추가/ 수정/ 삭제를 할 수 있는 기능.
 ![ff](https://user-images.githubusercontent.com/96754807/153532309-941d3599-6fc7-4127-9afa-a9176735b331.png)
 
-### 2. 관리자 기능
 
+
+### 3. 관리자 기능
+
+
+#### 관리자 페이지에서 별도 로그인을 한 후 일반 홈으로 이동후 보여지는 뷰.
 ![gg](https://user-images.githubusercontent.com/96754807/153532320-c7ee31cb-6d2b-4799-ad9e-4573fcd148c1.png)
-관리자 페이지에서 별도 로그인을 한 후 일반 홈으로 이동후 보여지는 뷰.
 
+#### 관리자가 마켓내의 전체 주문 조회가 가능. 하지만 회원이 등록한 상품의 대한 수정은 불가능.
 ![hh](https://user-images.githubusercontent.com/96754807/153532343-68598501-f5ae-4e83-b595-024d170fce11.png)
-관리자가 마켓내의 전체 주문 조회가 가능. 하지만 회원이 등록한 상품의 대한 수정은 불가능.
 
+#### 관리자가 마켓내의 전체 등록 상품의 조회가 가능. 하지만 주문에 대한 수정은 불가능.
 ![ii](https://user-images.githubusercontent.com/96754807/153532350-dd12d8cf-451f-41bc-923d-b8e16dfc0f32.png)
-관리자가 마켓내의 전체 등록 상품의 조회가 가능. 하지만 주문에 대한 수정은 불가능.
+
