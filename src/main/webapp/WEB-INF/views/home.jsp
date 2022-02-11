@@ -8,14 +8,10 @@
 <meta charset="UTF-8">
 <title>Home</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="/resources/js/file.js" type="text/javascript"></script>
 <style type="text/css">
 
@@ -26,6 +22,10 @@
 
 margin-left: 300px;
 }
+.uploadeditem{
+width : 200px;
+height : 200px;
+}
 
 </style>
 </head>
@@ -33,6 +33,22 @@ margin-left: 300px;
 	<jsp:include page="header.jsp" />
 	<jsp:include page="sidebar.jsp" />
 
+	<div class="container">
+		<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img style="height: 400px;" src="/resources/img/manager00.jpg" class="d-block w-100" alt="...">
+				</div>
+				<div class="carousel-item">
+					<img style="height: 400px;" src="/resources/img/manager02.jpg" class="d-block w-100" alt="...">
+				</div>
+				<div class="carousel-item">
+					<img style="height: 400px;" src="/resources/img/manager03.png" class="d-block w-100" alt="...">
+				</div>
+			</div>
+		</div>
+	</div>
+	
 	<div class="item_ranklist">
 		<div class="ranklist-header">
 		<h5>랭킹</h5>
@@ -67,17 +83,18 @@ margin-left: 300px;
 				if(arr==''){
 					$(".uploadedList").append("<p>상품을 등록해 주세요.</p>");
 				}else{
-					for (var i = 0; i < 8; i++) {
+					for (var i = 0; i < arr.length; i++) {
+						if(i >8){ return;}
 						var item_no = arr[i].item_no;
 						var item_name = arr[i].item_name;
 						var file_name = arr[i].file_name;
 						var i = i;
-						var item = uploadedItemForRank(file_name, item_no,
-								item_name);
+						var item = uploadedItemForRank(file_name, item_no,item_name);
 						$(".uploadedList").append(item);
 					}
 				}
 				});
 	</script>
 </body>
+
 </html>

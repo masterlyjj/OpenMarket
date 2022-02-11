@@ -48,7 +48,7 @@ float: left;
 							<th scope="col">상품 이미지</th>
 							<th scope="col"><span>상품명</span></th>
 							<th scope="col">할인가(판매가)</th>
-							<th scope="col">수량/재고</th>
+							<th scope="col">수량</th>
 							<th scope="col">합계</th>
 							<th scope="col">선택</th>
 						</tr>
@@ -64,12 +64,12 @@ float: left;
 										data-file_name="${cart.file_name}"
 										class="uploadedList${i.index}"></div></td>
 								<td><a style="text-decoration: none; color: #000;" href="/item/read/${cart.item_no}">${cart.item_name}</a></td>
-								<td><span class="dprice">${(100-cart.discount_percentage)*cart.item_price/100}</span>(${cart.item_price})
+								<td><span class="dprice">${(cart.item_price-(cart.item_price*(cart.discount_percentage/100)))}</span>(${cart.item_price})
 									원</td>
-								<td><input class="ino${i.index}" style="width:30px;" name="cart_quantity" type="number"
+								<td><input class="ino${i.index}" style="width:50px;" name="cart_quantity" type="number"
 									data-itemno="${cart.item_no}" data-ea="" min="1" max="99" step="1"
 									value="${cart.cart_quantity}"></td>
-								<td><span class="isum">${((100-cart.discount_percentage)*cart.item_price/100)*cart.cart_quantity}</span></td>
+								<td><span class="isum">${(cart.item_price-(cart.item_price*(cart.discount_percentage/100)))*cart.cart_quantity}</span>원</td>
 								<td><button data-citem_no="${cart.cart_no}"
 										class="btn btn-outline-info btn-sm del">삭제</button> <br></td>
 							</tr>
@@ -79,8 +79,7 @@ float: left;
 				</table>
 				<div
 					style="font-size: 15pt; font-weight: bold; width: 30%; margin-left: 70%;">
-					<span class="totalprice">결제금액
-						:&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;</span><span>원</span>
+					<span class="totalprice"></span>
 				</div>
 		</form>
 		<div style="margin-left: 80%; margin-top: 5%">
@@ -129,7 +128,7 @@ float: left;
 		
 		var money = "${map.sumMoney}";
 		var sumMoney = eval(money);
-		$(".totalprice").append(sumMoney);
+		$(".totalprice").append('결제금액 : '+sumMoney+' 원');
 
 		var ilist = "${map.ilist}";
 		var iarr = eval(ilist);
@@ -145,14 +144,15 @@ float: left;
 					var update_quantity = $(this).val();
 					var totalprice = $(this).val();
 					var item_no = $(this).attr("data-itemno");
-					$.getJSON("/item/getQuantity/"+item_no, function(data){
-						var item_ea = $("input[data-itemno='"+item_no+"']").attr("data-ea");
+					var item_ea = $("input[data-itemno='"+item_no+"']").attr("data-ea");
 							if (update_quantity > item_ea) {
 								alert("재고수량을 초과했습니다.");
 								qtag.val(item_ea);
 								update_quantity = item_ea;
+								console.log(update_quantity);
+								console.log(item_ea);
+							event.preventDefault();
 							}
-					})
 					$.ajax({
 						type : "post",
 						url : "/cart/updateQuantity",
@@ -172,7 +172,7 @@ float: left;
 							for (var i = 0; i < arr.length; i++) {
 								sum = sum + eval($(arr[i]).text());
 							}
-							$(".totalprice").text(sum);
+							$(".totalprice").text('결제금액 : '+sum+' 원');
 						}
 					});
 				});

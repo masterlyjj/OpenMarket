@@ -65,9 +65,6 @@ float : left;
 						<li class="nav-item"><a class="nav-link text-muted" href="/category/list/"> 
 								<span data-feather="file-text"></span> 카테고리
 						</a></li>
-						<li class="nav-item"><a class="nav-link text-muted" href="/member/read/${login.member_id}">
-								<span data-feather="file-text"></span> 내 정보
-						</a></li>
 				</c:when>
 				
 				 <c:when test="${managerLogin.manager_code > 0}">
