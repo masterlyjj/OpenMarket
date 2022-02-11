@@ -19,3 +19,15 @@ spring framework를 이용한 오픈마켓 쇼핑몰입니다. 상품을 보며 
 ## 4. ERD
  ![ERD](https://user-images.githubusercontent.com/96754807/153321912-20fc51ae-5ad5-4b03-9916-e67a808b7e2c.PNG)
 ## 5. 기능
+ # 1. 일반회원 판매자 기능
+![bb](https://user-images.githubusercontent.com/96754807/153532243-15bb28b9-9538-4af3-8020-75e6f7906975.png)
+![cc](https://user-images.githubusercontent.com/96754807/153532245-b41f02db-81f7-41bd-a543-d12acf5c5930.png)
+![dd](https://user-images.githubusercontent.com/96754807/153532249-574b78af-dd33-478b-9a85-17c4ac6605c2.png)
+![ee](https://user-images.githubusercontent.com/96754807/153532255-0a64c5e7-34dd-4385-b604-12cc9f44fd11.png)
+![ff](https://user-images.githubusercontent.com/96754807/153532309-941d3599-6fc7-4127-9afa-a9176735b331.png)
+
+# 2. 관리자 기능
+
+![gg](https://user-images.githubusercontent.com/96754807/153532320-c7ee31cb-6d2b-4799-ad9e-4573fcd148c1.png)
+![hh](https://user-images.githubusercontent.com/96754807/153532343-68598501-f5ae-4e83-b595-024d170fce11.png)
+![ii](https://user-images.githubusercontent.com/96754807/153532350-dd12d8cf-451f-41bc-923d-b8e16dfc0f32.png)
