@@ -69,3 +69,16 @@ spring framework를 이용한 오픈마켓 쇼핑몰입니다. 상품을 보며 
 #### 관리자가 마켓내의 전체 등록 상품의 조회가 가능. 하지만 주문에 대한 수정은 불가능.
 ![ii](https://user-images.githubusercontent.com/96754807/153532350-dd12d8cf-451f-41bc-923d-b8e16dfc0f32.png)
 
+### 경영자 기능
+
+#### 쇼핑몰 전체 매출 확인 기능
+![b1](https://user-images.githubusercontent.com/96754807/153540612-e8b5bfd2-e025-4c55-959e-ef8486e165a3.png)
+
+#### 인기 상품 순위
+![b2](https://user-images.githubusercontent.com/96754807/153540650-c977b992-ea83-4790-b8ed-9f7a74bdc650.png)
+
+#### 가입 연령대 별 집계
+![b5](https://user-images.githubusercontent.com/96754807/153540711-e5f806a7-a93a-4260-a8da-f6747921f90f.png)
+
+#### 인기 상품 판매량
+![b3](https://user-images.githubusercontent.com/96754807/153540734-d298164e-e3a6-47c6-b572-8194ae7db3f7.png)
