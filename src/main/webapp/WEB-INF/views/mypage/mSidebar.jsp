@@ -34,12 +34,6 @@ float : left;
 						<li class="nav-item"><a class="nav-link text-muted" href="/likeitem/list/${login.member_id}">
 								<span data-feather="file-text"></span> 좋아요
 						</a></li>
-						<li class="nav-item"><a class="nav-link text-muted" href="/Myreplies/list/${login.member_id}">
-								<span data-feather="file-text"></span> 리뷰 목록
-						</a></li>
-						<li class="nav-item"><a class="nav-link text-muted" href="/qna/listForMember/${login.member_id}">
-								<span data-feather="file-text"></span> Q&A 목록
-						</a></li>
 						<li class="nav-item"><a class="nav-link text-muted" href="/member/read/${login.member_id}">
 								<span data-feather="file-text"></span> 내 정보
 						</a></li>

@@ -15,13 +15,12 @@
   <script src="/resources/js/file.js" type="text/javascript"></script>
 <style type="text/css">
 .refundpage{
-    width: 1250px;
+    width: 1040px;
     padding: 0;
     float: right;
 }
 
 .h-detail{
-	margin-top: 55px;
 	padding-bottom: 10px;
 	border-bottom: 1px solid #000000;
 }
@@ -56,6 +55,11 @@ dd {
 	align-content: center;
 }
 
+.wrap-refundpage{
+    width: 1040px;
+    display: inline-flex;
+}
+
 .refundpage{
     padding: 0;
     float: right;
@@ -64,12 +68,13 @@ dd {
 .wrap-ordered-detail {
     overflow: hidden;
     position: relative;
+    margin-top : 20px;
 }
 
 .sec-oredered-detail{
 	float : none;
 	width:50%;
-	height: 220px;
+	height: 250px;
     padding-right: 30px;
 }
 
@@ -89,8 +94,9 @@ dd {
 </head>
 <body>
 	<jsp:include page="../header.jsp" />
-	<jsp:include page="../sidebar.jsp" />
+	<jsp:include page="../mypage/mSidebar.jsp" />
 
+	<div class="wrap-refundpage">
 	<section class="refundpage">
 		<header class="h-detail">
 			<h3 class="h-refund">상품정보</h3>
@@ -175,6 +181,7 @@ dd {
 			</section>
 		</div>
 	</section>
+	</div>
 <script type="text/javascript">
 
 		var item_no = ${ivo.item_no};
@@ -205,5 +212,8 @@ dd {
 		});
 	</script>
 </body>
+
+<footer>
 <jsp:include page="../footer.jsp" />
+</footer>
 </html>

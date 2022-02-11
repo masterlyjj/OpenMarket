@@ -6,12 +6,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Item List Of All</title>
+<title>전체 상품 조회</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="/resources/js/file.js" type="text/javascript"></script>
 </head>
 <body>
@@ -32,7 +31,6 @@
 				<th scope="col">할인률</th>
 				<th scope="col">재고 수량</th>
 				<th scope="col">등록일</th>
-				<th scope="col"></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -50,11 +48,6 @@
 					<c:if test="${vo.item_amount > 0}">${vo.item_amount}</c:if>
 					</td>
 					<td>${vo.item_regdate}</td>
-					<td>
-						<a class="btn btn-outline-primary btn-sm" href="/item/addItem/${vo.item_no}">추가</a>
-						<a class="btn btn-outline-primary btn-sm" href="/item/update/${vo.item_no}">수정</a>
-						<a class="btn btn-outline-primary btn-sm" data-item_no="${vo.item_no}" class="delete" href="/item/delete/${vo.item_no}">삭제</a>
-					</td>
 				</tr>
 			</c:forEach>
 		</tbody>

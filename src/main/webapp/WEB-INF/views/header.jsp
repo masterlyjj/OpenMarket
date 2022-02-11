@@ -3,8 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
-
-
 <style type="text/css">
 body {
     font-size: 12px;
@@ -208,7 +206,7 @@ height : 38px;
           
           <c:when test="${not empty login || not empty managerLogin}">
             <c:if test="${not empty login}">${login.member_id}님, 환영합니다.</c:if>
-            <c:if test="${not empty managerLogin}">${managerLogin.manager_id}님, 환영합니다.</c:if>
+            <c:if test="${not empty managerLogin}">관리자 로그인 하셨습니다.</c:if>
             <a class="btn btn-outline-primary btn-sm" href="/member/logout">로그아웃</a>
           </c:when>
         </c:choose>
